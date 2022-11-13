@@ -1,0 +1,8 @@
+
+.cardOpen{
+    display:flex;
+}
+
+.cardClosed{
+    display:none;
+}
