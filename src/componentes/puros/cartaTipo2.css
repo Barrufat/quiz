@@ -28,6 +28,18 @@ h2.respuesta{
     cursor:pointer;
 }
 
+h2.respuestaMarcada{
+    background-color: rgb(165, 197, 187);
+    border-radius: 60px;
+    color:rgb(25, 59, 47);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor:pointer;
+}
+
 h2.respuesta:hover{
     background-color: rgb(165, 197, 187);
     border-radius: 60px;
@@ -87,4 +99,8 @@ h2.respuestaCorrecta{
 
 .closed{
     display:none;
+}
+
+.pareja{
+    display:flex;
 }
