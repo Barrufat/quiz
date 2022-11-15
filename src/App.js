@@ -36,7 +36,7 @@ function App() {
     // setSegundo(0);
     // setClearToggle(false);
 
-    let min = 3;
+    let min = 1;
     let max = 4;
 
     let numero = Math.random() * (max - min) + min;
@@ -69,7 +69,7 @@ function App() {
       setSegundo(0);
       setGameOver(true);
 
-      let min = 3;
+      let min = 1;
       let max = 4;
 
       let numero = Math.random() * (max - min) + min;
@@ -105,6 +105,7 @@ function App() {
       setClearToggle(true);
       setDisplay1('cardClosed');
       setDisplay2('cardClosed');
+      setDisplay3('cardClosed');
       setDisplayContador('cardClosed')
       setDisplayPoints('cardOpen');
     }
@@ -116,6 +117,8 @@ function App() {
     if (pausa) {
       setClearToggle(true);
       setZeroToggle(true);
+    } else {
+      setClearToggle(false);
     }
   }
 
