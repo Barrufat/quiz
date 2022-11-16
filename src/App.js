@@ -1,11 +1,13 @@
 
 import './App.css';
+import { useState, useEffect } from 'react';
+// import axios from 'axios';
 
 import Carta1 from './componentes/puros/carta1';
 import Carta2 from './componentes/puros/carta2';
 import Contador from './componentes/puros/contador';
-import { useState, useEffect } from 'react';
 import Carta3 from './componentes/puros/carta3';
+// import Ranking from './componentes/ranking';
 
 function App() {
 
@@ -22,6 +24,7 @@ function App() {
   const [displayEmpezar, setDisplayEmpezar] = useState('cardOpen')
   const [zeroToggle, setZeroToggle] = useState(false);
   const [clearToggle, setClearToggle] = useState(true);
+  const [points, setPoints] = useState('');
 
   function TickTack(numero) {
     setGameOver(false);
@@ -52,7 +55,6 @@ function App() {
 
     setDisplayContador('Open');
     setDisplayEmpezar('cardClosed');
-    setDisplayPoints('cardClosed');
 
     setPregunta(pregunta + 1);
     // console.log('Pregunta :' + pregunta);
@@ -60,6 +62,33 @@ function App() {
     setZeroToggle(true);
     setClearToggle(false);
     Lanzar();
+  }
+
+  function verRanking() {
+    getPuntos();
+    setDisplayContador('Open');
+    setDisplayEmpezar('cardOpen');
+    setDisplayPoints('cardClosed');
+  }
+
+  function getPuntos() {
+
+    fetch("http://localhost:3030/api/puntos/")
+      .then(results => results.json())
+      .then(results => setPoints(JSON.stringify(results.data)))
+      .catch(err => console.log(err))
+    console.log("Puntos" + points);
+
+    return (
+      <ul className='ranking'>
+        {points.map(jugador => (
+          <li key={jugador.id} className='jugador' >
+            <h1>{jugador.nombre}</h1>
+            <h2>{jugador.puntos}</h2>
+          </li>
+        ))}
+      </ul>
+    )
   }
 
   useEffect(() => {
@@ -157,6 +186,8 @@ function App() {
     setPuntos(puntos + numero)
   }
 
+
+
   return (
     <div className='contenedor'>
       <div className={displayEmpezar}>
@@ -167,6 +198,7 @@ function App() {
           <Contador zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
           <h1> Puntos: {puntos} </h1>
           <h2> Pregunta: {pregunta} </h2>
+          {/* <button onClick={getPuntos}>Fetch</button> */}
         </div>
         <div className={display1}>
           <Carta1 segundo={segundo} gameOver={gameOver}
@@ -184,11 +216,11 @@ function App() {
           <form>
             <input type="text"></input>
             <h1>Puntuación final: {puntos}</h1>
-            <button onClick={Empezar}>Nuevo juego</button>
+            <button onClick={verRanking}>Guardar</button>
           </form>
         </div>
       </div>
-
+      <getPuntos/>
     </div>
   );
 }
