@@ -1,12 +1,12 @@
 
 import './App.css';
 import { useState, useEffect } from 'react';
-// import axios from 'axios';
 
 import Carta1 from './componentes/puros/carta1';
 import Carta2 from './componentes/puros/carta2';
 import Contador from './componentes/puros/contador';
 import Carta3 from './componentes/puros/carta3';
+import PostForm from './componentes/puros/postform';
 // import Ranking from './componentes/ranking';
 
 function App() {
@@ -24,7 +24,8 @@ function App() {
   const [displayEmpezar, setDisplayEmpezar] = useState('cardOpen')
   const [zeroToggle, setZeroToggle] = useState(false);
   const [clearToggle, setClearToggle] = useState(true);
-  const [points, setPoints] = useState('');
+  const [displayRanking, setDisplayRanking] = useState('ranking')
+  const [points, setPoints] = useState([]);
 
   function TickTack(numero) {
     setGameOver(false);
@@ -34,10 +35,6 @@ function App() {
   }
 
   const Lanzar = () => {
-
-    // setPregunta(pregunta + 1);
-    // setSegundo(0);
-    // setClearToggle(false);
 
     let min = 1;
     let max = 4;
@@ -52,9 +49,9 @@ function App() {
   }
 
   function Empezar() {
-
     setDisplayContador('Open');
     setDisplayEmpezar('cardClosed');
+    setDisplayRanking('cardClosed');
 
     setPregunta(pregunta + 1);
     // console.log('Pregunta :' + pregunta);
@@ -64,32 +61,17 @@ function App() {
     Lanzar();
   }
 
-  function verRanking() {
-    getPuntos();
-    setDisplayContador('Open');
-    setDisplayEmpezar('cardOpen');
-    setDisplayPoints('cardClosed');
-  }
-
-  function getPuntos() {
-
+  useEffect(() => {
+    // if (getTrigger) {
     fetch("http://localhost:3030/api/puntos/")
       .then(results => results.json())
-      .then(results => setPoints(JSON.stringify(results.data)))
+      .then(results => setPoints(results.data))
       .catch(err => console.log(err))
-    console.log("Puntos" + points);
+    // }
+  }, [])
 
-    return (
-      <ul className='ranking'>
-        {points.map(jugador => (
-          <li key={jugador.id} className='jugador' >
-            <h1>{jugador.nombre}</h1>
-            <h2>{jugador.puntos}</h2>
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  // console.log("Puntos" + points);
+  // console.log('GetTrigger: ' + getTrigger)
 
   useEffect(() => {
     if (segundo === 25) {
@@ -186,12 +168,27 @@ function App() {
     setPuntos(puntos + numero)
   }
 
-
+  function verRanking(toggle) {
+    if(toggle){
+      setDisplayRanking('ranking');
+      setDisplayEmpezar('cardOpen');
+    }
+  }
 
   return (
     <div className='contenedor'>
       <div className={displayEmpezar}>
         <button onClick={Empezar}>Nuevo juego</button>
+        <div className={displayRanking}>
+        <h1 className='tituloRanking'>RANKING:</h1>
+          <ol >
+            {points.map(jugador => (
+              <li key={jugador.id} className='jugador' >
+                <h1 className='nombreJugador'>{jugador.nombre} - {jugador.puntos}</h1>
+              </li>
+            ))} 
+          </ol>
+        </div>
       </div>
       <div>
         <div className={displayContador}>
@@ -213,14 +210,9 @@ function App() {
             siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
         </div>
         <div className={displayPoints}>
-          <form>
-            <input type="text"></input>
-            <h1>Puntuación final: {puntos}</h1>
-            <button onClick={verRanking}>Guardar</button>
-          </form>
+        <PostForm points={puntos} sendAbrirToggle={verRanking}/>
         </div>
       </div>
-      <getPuntos/>
     </div>
   );
 }

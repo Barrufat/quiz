@@ -1,14 +1,47 @@
-
-.cardOpen{
-    display:flex;
+.cardOpen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.cardClosed{
-    display:none;
+.cardClosed {
+    display: none;
 }
 
-.contenedor{
-display:flex;
-justify-content: center;
-margin-top: 5%;
+.contenedor {
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ranking {
+    background-color: aquamarine;
+    margin-top: 10px;
+    border-radius: 20px;
+    width: 50vh;
+}
+
+.jugador {
+    display: flex;
+}
+
+.nombreJugador {
+    background-color: rgb(165, 197, 187);
+    border-radius: 10px;
+    color: rgb(25, 59, 47);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    padding: 10px;
+}
+
+.tituloRanking {
+    background-color: rgb(0, 0, 0, 0.3);
+    color: rgb(30, 44, 39);
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    margin-top:20px;
+    padding: 10px;
+    padding-left: 20px;
 }
