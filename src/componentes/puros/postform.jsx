@@ -21,6 +21,7 @@ function PostForm({points, sendAbrirToggle}) {
 
         })
             .then(res => {
+                abrirRanking();
                 console.log(res.data)
             })
             .catch(error => {
@@ -41,7 +42,7 @@ function PostForm({points, sendAbrirToggle}) {
             <form onSubmit={(e) => submit(e)}>
                 <input onChange={(e) => handle(e)} id="nombre" value={data.nombre} placeholder="nombre" type="text"></input>
                 <h1>Puntuación final: {points}</h1>
-                <button type="submit" onClick={abrirRanking}>Guardar</button>
+                <button type="submit" >Guardar</button>
             </form>
         </div>
     );

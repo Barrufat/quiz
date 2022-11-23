@@ -32,7 +32,7 @@ const Contador = ({ sendContador, clearToggle, zeroToggle }) => {
   };
 
   return (
-    <h3 className='contador'>TICK TACK: {contador} </h3>
+    <h3 className='contador'>Tiempo: {contador} </h3>
   )
 };
 

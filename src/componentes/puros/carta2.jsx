@@ -76,29 +76,50 @@ const Carta2 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
       setColor4B('closed');
     }
   }, [gameOver])
-  
+
 
   return (
-    <div className='carta'>
-      <h1 className='pregunta'>Pregunta2: Bla bla bla bla bla?</h1>
-      <div>
-      <h2 className={color1} onClick={PreguntaAcertada}>Respuesta 1</h2>
-      <h2 className={color1B} >Respuesta 1</h2>
+    <>
+      <div className='visor'>
+        <h1 className='pregunta'>Pregunta2: Bla bla bla bla bla?</h1>
+        <div>
+          <h2 className={color1}>Respuesta 1</h2>
+          <h2 className={color1B} >Respuesta 1</h2>
+        </div>
+        <div>
+          <h2 className={color2}>Respuesta 2</h2>
+          <h2 className={color2B}>Respuesta 2</h2>
+        </div>
+        <div>
+          <h2 className={color3}>Respuesta 3</h2>
+          <h2 className={color3B}>Respuesta 3</h2>
+        </div>
+        <div>
+          <h2 className={color4}>Respuesta 4</h2>
+          <h2 className={color4B}>Respuesta 4</h2>
+        </div>
       </div>
-      <div>
-      <h2 className={color2} onClick={Pregunta2}>Respuesta 2</h2>
-      <h2 className={color2B}>Respuesta 2</h2>
+      <div className='carta'>
+        <h1 className='pregunta'>Pregunta2: Bla bla bla bla bla?</h1>
+        <div>
+          <h2 className={color1} onClick={PreguntaAcertada}>Respuesta 1</h2>
+          <h2 className={color1B} >Respuesta 1</h2>
+        </div>
+        <div>
+          <h2 className={color2} onClick={Pregunta2}>Respuesta 2</h2>
+          <h2 className={color2B}>Respuesta 2</h2>
+        </div>
+        <div>
+          <h2 className={color3} onClick={Pregunta3}>Respuesta 3</h2>
+          <h2 className={color3B}>Respuesta 3</h2>
+        </div>
+        <div>
+          <h2 className={color4} onClick={Pregunta4}>Respuesta 4</h2>
+          <h2 className={color4B}>Respuesta 4</h2>
+        </div>
+        <h1 className={siguiente} onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
       </div>
-      <div>
-      <h2 className={color3} onClick={Pregunta3}>Respuesta 3</h2>
-      <h2 className={color3B}>Respuesta 3</h2>
-      </div>
-      <div>
-      <h2 className={color4} onClick={Pregunta4}>Respuesta 4</h2>
-      <h2 className={color4B}>Respuesta 4</h2>
-      </div>
-      <h1 className={siguiente} onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
-    </div>
+    </>
   )
 }
 

@@ -10,7 +10,6 @@ import Carta5 from './componentes/puros/carta5';
 import Carta6 from './componentes/puros/carta6';
 import Contador from './componentes/puros/contador';
 import PostForm from './componentes/puros/postform';
-// import Ranking from './componentes/ranking';
 
 function App() {
 
@@ -32,8 +31,7 @@ function App() {
   const [clearToggle, setClearToggle] = useState(true);
   const [displayRanking, setDisplayRanking] = useState('ranking')
   const [points, setPoints] = useState([]);
-  // const [numeroDado, setNumeroDado] = useState();
-
+  const [getRanking, setGetRanking] = useState (true);
   const [numArray, setNumArray] = useState ([]);
   console.log('numArray: ' + numArray);
 
@@ -43,22 +41,6 @@ function App() {
     setZeroToggle(false);
     setSegundo(numero + 1);
   }
-
-
-  // useEffect(() => {
-
-  //   if (!numArray.includes(numeroDado)) {
-  //     console.log('array no incluye al numero: ' + numeroDado)
-  //     numArray.push({ numeroDado });
-  //     cambiarNumero(numeroDado);
-  //     setGameOver(false);
-  //     setZeroToggle(true);
-  //   } else {
-  //     Lanzar();
-  //   }
-
-  // }, [numeroDado])
-
 
   const Lanzar = () => {
 
@@ -80,7 +62,7 @@ function App() {
   }
 
   function Empezar() {
-    setDisplayContador('Open');
+    setDisplayContador('contadorOpen');
     setDisplayEmpezar('cardClosed');
     setDisplayRanking('cardClosed');
 
@@ -91,18 +73,16 @@ function App() {
     setClearToggle(false);
     Lanzar();
   }
-
+  
   useEffect(() => {
-    // if (getTrigger) {
+    if (getRanking) {
     fetch("http://localhost:3030/api/puntos/")
       .then(results => results.json())
       .then(results => setPoints(results.data))
       .catch(err => console.log(err))
-    // }
-  }, [])
-
-  // console.log("Puntos" + points);
-  // console.log('GetTrigger: ' + getTrigger)
+      setGetRanking(false);
+    }
+  }, [getRanking])
 
   useEffect(() => {
     if (segundo === 25 && pregunta < 6) {
@@ -124,19 +104,6 @@ function App() {
       setDisplayPoints('cardOpen');
     }
   }, [segundo, pregunta, Lanzar])
-
-  // useEffect(() => {
-  //   if (pregunta === 6) {
-  //     setClearToggle(true);
-  //     setDisplay1('cardClosed');
-  //     setDisplay2('cardClosed');
-  //     setDisplay3('cardClosed');
-  //     setDisplay4('cardClosed');
-  //     setDisplay5('cardClosed');
-  //     setDisplayContador('cardClosed')
-  //     setDisplayPoints('cardOpen');
-  //   }
-  // }, [pregunta])
 
   const pausaPregunta = (pausa) => {
 
@@ -215,8 +182,11 @@ function App() {
 
   function verRanking(toggle) {
     if (toggle) {
+      setGetRanking(true);
       setDisplayRanking('ranking');
+      setDisplayPoints('cardClosed')
       setDisplayEmpezar('cardOpen');
+      setNumArray([]);
     }
   }
 
@@ -237,10 +207,10 @@ function App() {
       </div>
       <div>
         <div className={displayContador}>
-          <Contador zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
-          <h1> Puntos: {puntos} </h1>
-          <h2> Pregunta: {pregunta} </h2>
-          {/* <button onClick={getPuntos}>Fetch</button> */}
+          <Contador className='contador' zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
+          <h1 className='currentPregunta'> Pregunta: {pregunta} </h1>
+          <h3 className='currentPuntos'> Puntos: {puntos} </h3>
+
         </div>
         <div className={display1}>
           <Carta1 segundo={segundo} gameOver={gameOver}

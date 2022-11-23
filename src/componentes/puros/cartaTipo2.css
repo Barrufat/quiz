@@ -1,14 +1,23 @@
-div.carta {
+div.visor {
     background-color: aquamarine;
     border-radius: 20px;
-    width:50vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border: thin black solid;
+}
+
+div.carta {
+    background-color: aquamarine;
+    border: dotted thin rgb(37, 65, 55);
+    border-radius: 20px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
 
 h1.pregunta {
     background-color: rgb(0, 0, 0, 0.3);
-    color:rgb(30, 44, 39);
+    color: rgb(30, 44, 39);
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
@@ -16,91 +25,81 @@ h1.pregunta {
     padding-left: 20px;
 }
 
-h2.respuesta{
+h2.respuestaTipo2 {
     background-color: rgb(227, 240, 236);
     border-radius: 60px;
-    color:rgb(25, 59, 47);
+    color: rgb(25, 59, 47);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-h2.respuestaMarcada{
+h2.respuestaMarcada {
     background-color: rgb(165, 197, 187);
     border-radius: 60px;
-    color:rgb(25, 59, 47);
+    color: rgb(25, 59, 47);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-h2.respuesta:hover{
+h2.respuesta:hover {
     background-color: rgb(165, 197, 187);
     border-radius: 60px;
-    color:rgb(25, 59, 47);
+    color: rgb(25, 59, 47);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
 
 }
 
-h2.respuestaIncorrecta{
+h2.respuestaIncorrecta {
     background-color: rgb(180, 127, 66);
     border-radius: 60px;
-    color:rgb(25, 59, 47);
+    color: rgb(25, 59, 47);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-h2.respuestaCorrecta{
+h2.respuestaCorrecta {
     background-color: rgb(101, 185, 115);
     border-radius: 60px;
-    color:rgb(25, 59, 27);
+    color: rgb(25, 59, 27);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.open{
+.open {
     background-color: rgb(101, 185, 115);
-    color:rgb(30, 44, 39);
+    color: rgb(30, 44, 39);
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
     padding-left: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.openFallo{
+.openFallo {
     background-color: rgb(180, 127, 66);
-    color:rgb(30, 44, 39);
+    color: rgb(30, 44, 39);
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
     padding: 10px;
     padding-left: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.open:hover{
+.open:hover {
     background-color: rgb(165, 197, 187);
-    color:rgb(30, 44, 39);
+    color: rgb(30, 44, 39);
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: larger;
@@ -108,10 +107,29 @@ h2.respuestaCorrecta{
     padding-left: 20px;
 }
 
-.closed{
-    display:none;
+.closed {
+    display: none;
 }
 
-.pareja{
-    display:flex;
+.pareja {
+    display: flex;
+}
+
+.linea {
+    position: absolute;
+}
+
+.columnaPreguntas {
+    display: flex;
+    flex-direction: column;
+    margin-left:20px;
+}
+.columnaRespuestas {
+    display: flex;
+    flex-direction: column;
+    margin-right:20px;
+
+}
+.columnaLinea {
+    width: 40px;
 }
