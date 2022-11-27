@@ -1,6 +1,7 @@
 
 import './App.css';
 import { useState, useEffect } from 'react';
+import $ from 'jquery';
 
 import Carta1 from './componentes/puros/carta1';
 import Carta2 from './componentes/puros/carta2';
@@ -30,10 +31,18 @@ function App() {
   const [zeroToggle, setZeroToggle] = useState(false);
   const [clearToggle, setClearToggle] = useState(true);
   const [displayRanking, setDisplayRanking] = useState('ranking')
+  const [displayRankingCard, setDisplayRankingCard] = useState('rankingCard')
   const [points, setPoints] = useState([]);
-  const [getRanking, setGetRanking] = useState (true);
-  const [numArray, setNumArray] = useState ([]);
+  const [getRanking, setGetRanking] = useState(true);
+  const [numArray, setNumArray] = useState([]);
+
+  console.log('segundo: ' + segundo);
   console.log('numArray: ' + numArray);
+  console.log('displayPoints: ' + displayPoints);
+  console.log('getRanking: ' + getRanking);
+  console.log('ClearToggle: ' + clearToggle);
+
+  
 
   function TickTack(numero) {
 
@@ -52,7 +61,7 @@ function App() {
 
     if (!numArray.includes(numeroRedondo)) {
       console.log('array no incluye al numero: ' + numeroRedondo)
-      setNumArray( [...numArray, numeroRedondo])
+      setNumArray([...numArray, numeroRedondo])
       cambiarNumero(numeroRedondo);
       setGameOver(false);
       setZeroToggle(true);
@@ -65,21 +74,23 @@ function App() {
     setDisplayContador('contadorOpen');
     setDisplayEmpezar('cardClosed');
     setDisplayRanking('cardClosed');
-
+    setDisplayRankingCard('cardClosed');
+    setGetRanking(false);
     setPregunta(pregunta + 1);
-    // console.log('Pregunta :' + pregunta);
+    setPuntos(0);
     setSegundo(0);
+    setNumArray([]);
     setZeroToggle(true);
     setClearToggle(false);
     Lanzar();
   }
-  
+
   useEffect(() => {
     if (getRanking) {
-    fetch("http://localhost:3030/api/puntos/")
-      .then(results => results.json())
-      .then(results => setPoints(results.data))
-      .catch(err => console.log(err))
+      fetch("http://localhost:3030/api/puntos/")
+        .then(results => results.json())
+        .then(results => setPoints(results.data))
+        .catch(err => console.log(err))
       setGetRanking(false);
     }
   }, [getRanking])
@@ -90,9 +101,10 @@ function App() {
       setPregunta(pregunta + 1);
       setSegundo(0);
       setGameOver(true);
-
       Lanzar();
-    }   else if (pregunta > 5) {
+
+    } else if (pregunta > 5) {
+      $(".visor").hide();
       setClearToggle(true);
       setDisplay1('cardClosed');
       setDisplay2('cardClosed');
@@ -107,7 +119,6 @@ function App() {
 
   const pausaPregunta = (pausa) => {
 
-    // console.log('Pausa: ' + pausa)
     if (pausa) {
       setClearToggle(true);
       setZeroToggle(true);
@@ -118,9 +129,8 @@ function App() {
 
   const siguientePregunta = (siguiente) => {
     if (siguiente) {
-
       setPregunta(pregunta + 1);
-      // console.log('Pregunta :' + pregunta);
+
       setSegundo(0);
       setGameOver(true);
       setZeroToggle(true);
@@ -130,7 +140,8 @@ function App() {
   }
 
   function cambiarNumero(numeroRedondo) {
-
+    $(".visor").hide();
+    $(".visor_" + numeroRedondo).fadeIn("fast");
     if (numeroRedondo === 1) {
       setDisplay1('cardOpen');
       setDisplay2('cardClosed');
@@ -181,19 +192,35 @@ function App() {
   }
 
   function verRanking(toggle) {
-    if (toggle) {
-      setGetRanking(true);
-      setDisplayRanking('ranking');
-      setDisplayPoints('cardClosed')
-      setDisplayEmpezar('cardOpen');
-      setNumArray([]);
-    }
+    setGetRanking(toggle);
+    setDisplayRanking('ranking');
+    setDisplayRankingCard('rankingCard');
+    setDisplayEmpezar('cardOpen');
+    setDisplayPoints('cardClosed');
+    setNumArray([]);
+    setPregunta(0);
+    setSegundo(0);
+    setZeroToggle(true);
+    setClearToggle(true);
+  }
+
+  useEffect(() => {
+    JQuerycode();
+  }, [])
+
+
+  const JQuerycode = () => {
+    console.log("jquery");
+    $(".visor").detach().prependTo(".contPreguntes");
+    $(".visor").hide();
+    return (
+      false
+    )
   }
 
   return (
-    <div className='contenedor'>
-      <div className={displayEmpezar}>
-        <button onClick={Empezar}>Nuevo juego</button>
+    <>
+      <div className='contenedorVisor'>
         <div className={displayRanking}>
           <h1 className='tituloRanking'>RANKING:</h1>
           <ol >
@@ -204,43 +231,64 @@ function App() {
             ))}
           </ol>
         </div>
-      </div>
-      <div>
+
         <div className={displayContador}>
           <Contador className='contador' zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
           <h1 className='currentPregunta'> Pregunta: {pregunta} </h1>
           <h3 className='currentPuntos'> Puntos: {puntos} </h3>
+        </div>
 
+        <div className='contPreguntes' />
+
+      </div>
+
+
+      <div className='contenedorCarta'>
+        <div className={displayEmpezar}>
+          <button className='empezar' onClick={Empezar}>Nuevo juego</button>
+          <div className={displayRankingCard}>
+            <h1 className='tituloRankingCard'>RANKING:</h1>
+            <ol >
+              {points.map(jugador => (
+                <li key={jugador.id} className='jugador' >
+                  <h1 className='nombreJugadorCard'>{jugador.nombre} - {jugador.puntos}</h1>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
-        <div className={display1}>
-          <Carta1 segundo={segundo} gameOver={gameOver}
-            siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
-        </div>
-        <div className={display2}>
-          <Carta2 segundo={segundo} gameOver={gameOver}
-            siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
-        </div>
-        <div className={display3}>
-          <Carta3 segundo={segundo} gameOver={gameOver}
-            siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
-        </div>
-        <div className={display4}>
-          <Carta4 segundo={segundo} gameOver={gameOver}
-            siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
-        </div>
-        <div className={display5}>
-          <Carta5 segundo={segundo} gameOver={gameOver}
-            siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
-        </div>
-        <div className={display6}>
-          <Carta6 segundo={segundo} gameOver={gameOver}
-            siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
-        </div>
-        <div className={displayPoints}>
-          <PostForm points={puntos} sendAbrirToggle={verRanking} />
+        <div>
+          <div className={display1}>
+            <Carta1 segundo={segundo} gameOver={gameOver}
+              siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
+          </div>
+          <div className={display2}>
+            <Carta2 segundo={segundo} gameOver={gameOver}
+              siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
+          </div>
+          <div className={display3}>
+            <Carta3 segundo={segundo} gameOver={gameOver}
+              siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
+          </div>
+          <div className={display4}>
+            <Carta4 segundo={segundo} gameOver={gameOver}
+              siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
+          </div>
+          <div className={display5}>
+            <Carta5 segundo={segundo} gameOver={gameOver}
+              siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
+          </div>
+          <div className={display6}>
+            <Carta6 segundo={segundo} gameOver={gameOver}
+              siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
+          </div>
+          <div className={displayPoints}>
+            <PostForm points={puntos} sendAbrirToggle={verRanking}/>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+
   );
 }
 

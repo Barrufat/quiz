@@ -4,13 +4,26 @@ input {
     border: none;
     border-radius: 5px;
     background-color: white;
-    font-size: 30px;
+    font-size: 80px;
 }
 
 .formulario {
     display:flex;
+    flex-direction: column;
     align-items: center;
     margin: 30px;
+}
+
+h1.points{
+    font-size: 80px;
+}
+
+button.guardar{
+    font-size: 80px;
+}
+
+button.closed{
+    display:none;
 }
 
 

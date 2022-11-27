@@ -21,7 +21,7 @@ const Contador = ({ sendContador, clearToggle, zeroToggle }) => {
   });
 
   const Tick = () => {
-    console.log('ClearToggle: ' + clearToggle)
+    
     if (!clearToggle) {
       setContador(contador + 1);
       sendContador(contador);

@@ -7,7 +7,6 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
     const [siguiente, setSiguiente] = useState('closed');
     const [hasFallado, setHasFallado] = useState('closed');
-    const [segundoDeAcierto, setSegundoDeAcierto] = useState(0);
 
     const [option1, setOption1] = useState(false);
     const [option2, setOption2] = useState(false);
@@ -34,36 +33,24 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     const [color3B, setColor3B] = useState('respuestaTipo2');
     const [color4B, setColor4B] = useState('respuestaTipo2');
 
+    const [color1Card, setColor1Card] = useState('respuestaTipo2Card');
+    const [color2Card, setColor2Card] = useState('respuestaTipo2Card');
+    const [color3Card, setColor3Card] = useState('respuestaTipo2Card');
+    const [color4Card, setColor4Card] = useState('respuestaTipo2Card');
+
+    const [color1BCard, setColor1BCard] = useState('respuestaTipo2Card');
+    const [color2BCard, setColor2BCard] = useState('respuestaTipo2Card');
+    const [color3BCard, setColor3BCard] = useState('respuestaTipo2Card');
+    const [color4BCard, setColor4BCard] = useState('respuestaTipo2Card');
+
     const [linea1, setLinea1] = useState('./1-0.png');
     const [linea2, setLinea2] = useState('./2-0.png');
     const [linea3, setLinea3] = useState('./3-0.png');
     const [linea4, setLinea4] = useState('./4-0.png');
 
 
-    // const PreguntaAcertada = () => {
-    //     setSiguiente('open')
-
-    //     sendPausa(true);
-
-    //     if (segundo < 5) {
-    //         sendPuntos(100)
-    //     } else if (5 < segundo < 10) {
-    //         sendPuntos(66);
-    //     } else if (10 < segundo) {
-    //         sendPuntos(33)
-    //     }
-    // }
-
 
     const Siguiente = () => {
-
-        if (segundoDeAcierto < 10) {
-            sendPuntos(100)
-        } else if (5 < segundoDeAcierto < 15) {
-            sendPuntos(66);
-        } else if (15 < segundoDeAcierto) {
-            sendPuntos(33)
-        }
 
         siguienteSend(true);
         setSiguiente('closed');
@@ -77,10 +64,14 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
         setColor3B('respuestaTipo2');
         setColor4B('respuestaTipo2');
 
-        console.log('Opcion1: ' + option1 + ' Respuesta1: ' + respuesta1 + ' RespCorrecta1: ' + respCorrecta1)
-        console.log('Opcion2: ' + option2 + ' Respuesta2: ' + respuesta2 + ' RespCorrecta2: ' + respCorrecta2)
-        console.log('Opcion3: ' + option3 + ' Respuesta3: ' + respuesta3 + ' RespCorrecta3: ' + respCorrecta3)
-        console.log('Opcion4: ' + option4 + ' Respuesta4: ' + respuesta4 + ' RespCorrecta4: ' + respCorrecta4)
+        setColor1Card('respuestaTipo2Card');
+        setColor2Card('respuestaTipo2Card');
+        setColor3Card('respuestaTipo2Card');
+        setColor4Card('respuestaTipo2Card');
+        setColor1BCard('respuestaTipo2Card');
+        setColor2BCard('respuestaTipo2Card');
+        setColor3BCard('respuestaTipo2Card');
+        setColor4BCard('respuestaTipo2Card');
     }
 
     const TryAgain = () => {
@@ -103,11 +94,6 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
         setLinea2('./2-0.png');
         setLinea3('./3-0.png');
         setLinea4('./4-0.png');
-
-        console.log('Opcion1: ' + option1 + ' Respuesta1: ' + respuesta1 + ' RespCorrecta1: ' + respCorrecta1)
-        console.log('Opcion2: ' + option2 + ' Respuesta2: ' + respuesta2 + ' RespCorrecta2: ' + respCorrecta2)
-        console.log('Opcion3: ' + option3 + ' Respuesta3: ' + respuesta3 + ' RespCorrecta3: ' + respCorrecta3)
-        console.log('Opcion4: ' + option4 + ' Respuesta4: ' + respuesta4 + ' RespCorrecta4: ' + respCorrecta4)
     }
 
     useEffect(() => {
@@ -122,21 +108,29 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
             setColor3B('respuestaTipo2');
             setColor4B('respuestaTipo2');
 
+            setColor1Card('respuestaTipo2Card');
+            setColor2Card('respuestaTipo2Card');
+            setColor3Card('respuestaTipo2Card');
+            setColor4Card('respuestaTipo2Card');
+            setColor1BCard('respuestaTipo2Card');
+            setColor2BCard('respuestaTipo2Card');
+            setColor3BCard('respuestaTipo2Card');
+            setColor4BCard('respuestaTipo2Card');
+
         }
     }, [gameOver])
 
     function Option1() {
         setOption1(true);
         setColor1('respuestaMarcada')
+        setColor1Card('respuestaMarcadaCard')
     }
 
     function Respuesta1() {
         setColor1B('respuestaMarcada')
+        setColor1BCard('respuestaMarcadaCard')
         setRespuesta1(true);
-        console.log('respCorrecta1: ' + respCorrecta1)
-        console.log('respCorrecta2: ' + respCorrecta2)
-        console.log('respCorrecta3: ' + respCorrecta3)
-        console.log('respCorrecta4: ' + respCorrecta4)
+
 
         if (option1) {
             setRespCorrecta1(true);
@@ -169,11 +163,13 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
     function Option2() {
         setColor2('respuestaMarcada')
+        setColor2Card('respuestaMarcadaCard')
         setOption2(true);
     }
 
     function Respuesta2() {
         setColor2B('respuestaMarcada')
+        setColor2BCard('respuestaMarcadaCard')
         setRespuesta2(true);
 
         if (option1) {
@@ -207,12 +203,14 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
     function Option3() {
         setColor3('respuestaMarcada')
+        setColor3Card('respuestaMarcadaCard')
         setOption3(true);
     }
 
 
     function Respuesta3() {
         setColor3B('respuestaMarcada')
+        setColor3BCard('respuestaMarcadaCard')
         setRespuesta3(true);
 
         if (option1) {
@@ -246,6 +244,7 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
     function Option4() {
         setColor4('respuestaMarcada')
+        setColor4Card('respuestaMarcadaCard')
 
         setOption4(true);
     }
@@ -253,6 +252,7 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
     function Respuesta4() {
         setColor4B('respuestaMarcada')
+        setColor4BCard('respuestaMarcadaCard')
         setRespuesta4(true);
 
         if (option1) {
@@ -289,7 +289,14 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
             if (respCorrecta1 && respCorrecta2 && respCorrecta3 && respCorrecta4) {
                 setSiguiente('open')
                 sendPausa(true);
-                setSegundoDeAcierto(segundo);
+
+                if (segundo < 5) {
+                    sendPuntos(100)
+                } else if (5 < segundo < 10) {
+                    sendPuntos(66);
+                } else if (10 < segundo) {
+                    sendPuntos(33)
+                }
 
                 setOption1(false);
                 setOption2(false);
@@ -316,6 +323,14 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
                 setColor2B('respuestaTipo2');
                 setColor3B('respuestaTipo2');
                 setColor4B('respuestaTipo2');
+                setColor1Card('respuestaTipo2Card');
+                setColor2Card('respuestaTipo2Card');
+                setColor3Card('respuestaTipo2Card');
+                setColor4Card('respuestaTipo2Card');
+                setColor1BCard('respuestaTipo2Card');
+                setColor2BCard('respuestaTipo2Card');
+                setColor3BCard('respuestaTipo2Card');
+                setColor4BCard('respuestaTipo2Card');
                 setOption1(false);
                 setOption2(false);
                 setOption3(false);
@@ -332,7 +347,7 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
     return (
         <>
-            <div className='visor'>
+            <div className='visor visor_5'>
                 <h1 className='pregunta'>Pregunta5: Relaciona!</h1>
                 <div className='pareja'>
                     <div className='columnaPreguntas'>
@@ -342,10 +357,10 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
                         <h2 className={color4}>Opción 4</h2>
                     </div>
                     <div className='columnaLinea'>
-                        <img className='linea' src={linea1} alt={linea1} width='40px' />
-                        <img className='linea' src={linea2} alt={linea2} width='40px' />
-                        <img className='linea' src={linea3} alt={linea3} width='40px' />
-                        <img className='linea' src={linea4} alt={linea4} width='40px' />
+                        <img className='linea' src={linea1} alt={linea1} width='115px' />
+                        <img className='linea' src={linea2} alt={linea2} width='115px' />
+                        <img className='linea' src={linea3} alt={linea3} width='115px' />
+                        <img className='linea' src={linea4} alt={linea4} width='115px' />
                     </div>
                     <div className='columnaRespuestas'>
                         <h2 className={color1B}>Respuesta 1</h2>
@@ -356,25 +371,25 @@ const Carta5 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
                 </div>
             </div>
             <div className='carta'>
-                <h1 className='pregunta'>Pregunta5: Relaciona!</h1>
+                <h1 className='preguntaCard'>Pregunta5: Relaciona!</h1>
                 <div className='pareja'>
                     <div className='columnaPreguntas'>
-                        <h2 className={color1} onClick={Option1}>Opción 1</h2>
-                        <h2 className={color2} onClick={Option2}>Opción 2</h2>
-                        <h2 className={color3} onClick={Option3}>Opción 3</h2>
-                        <h2 className={color4} onClick={Option4}>Opción 4</h2>
+                        <h2 className={color1Card} onClick={Option1}>Opción 1</h2>
+                        <h2 className={color2Card} onClick={Option2}>Opción 2</h2>
+                        <h2 className={color3Card} onClick={Option3}>Opción 3</h2>
+                        <h2 className={color4Card} onClick={Option4}>Opción 4</h2>
                     </div>
-                    <div className='columnaLinea'>
-                        <img className='linea' src={linea1} alt={linea1} width='40px' />
-                        <img className='linea' src={linea2} alt={linea2} width='40px' />
-                        <img className='linea' src={linea3} alt={linea3} width='40px' />
-                        <img className='linea' src={linea4} alt={linea4} width='40px' />
+                    <div className='columnaLineaCard'>
+                        <img className='linea' src={linea1} alt={linea1} width='55px' />
+                        <img className='linea' src={linea2} alt={linea2} width='55px' />
+                        <img className='linea' src={linea3} alt={linea3} width='55px' />
+                        <img className='linea' src={linea4} alt={linea4} width='55px' />
                     </div>
                     <div className='columnaRespuestas'>
-                        <h2 className={color1B} onClick={Respuesta1}>Respuesta 1</h2>
-                        <h2 className={color2B} onClick={Respuesta2}>Respuesta 2</h2>
-                        <h2 className={color3B} onClick={Respuesta3}>Respuesta 3</h2>
-                        <h2 className={color4B} onClick={Respuesta4}>Respuesta 4</h2>
+                        <h2 className={color1BCard} onClick={Respuesta1}>Respuesta 1</h2>
+                        <h2 className={color2BCard} onClick={Respuesta2}>Respuesta 2</h2>
+                        <h2 className={color3BCard} onClick={Respuesta3}>Respuesta 3</h2>
+                        <h2 className={color4BCard} onClick={Respuesta4}>Respuesta 4</h2>
                     </div>
                 </div>
                 <h1 className={siguiente} onClick={Siguiente}> Pregunta acertada! </h1>
