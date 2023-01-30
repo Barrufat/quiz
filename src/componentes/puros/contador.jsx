@@ -21,7 +21,7 @@ const Contador = ({ sendContador, clearToggle, zeroToggle }) => {
   });
 
   const Tick = () => {
-    
+
     if (!clearToggle) {
       setContador(contador + 1);
       sendContador(contador);
@@ -32,7 +32,28 @@ const Contador = ({ sendContador, clearToggle, zeroToggle }) => {
   };
 
   return (
-    <h3 className='contador'>Tiempo: {contador} </h3>
+    <>
+      {/* <h3 className='contador'>Tiempo: {contador} </h3> */}
+      <div className="progressbar">
+        <div style={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+          backgroundColor: "white",
+          border: "solid 1px #819C6D",
+          borderRadius: "100px",
+        }} />
+        <div style={{
+          position:"absolute",
+          margin: '25px 0px 0px 15px',
+          height: "50%",
+          width: `${contador * 4}%`,
+          backgroundColor: "#819C6D",
+          transition: "width 4s",
+          borderRadius: "100px",
+        }}></div>
+      </div>
+    </>
   )
 };
 

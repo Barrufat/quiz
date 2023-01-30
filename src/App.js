@@ -11,6 +11,8 @@ import Carta5 from './componentes/puros/carta5';
 import Carta6 from './componentes/puros/carta6';
 import Contador from './componentes/puros/contador';
 import PostForm from './componentes/puros/postform';
+import Keyboard from 'react-simple-keyboard';
+import 'react-simple-keyboard/build/css/index.css';
 
 function App() {
 
@@ -27,22 +29,27 @@ function App() {
   const [puntos, setPuntos] = useState(0);
   const [displayPoints, setDisplayPoints] = useState('cardClosed')
   const [displayContador, setDisplayContador] = useState('cardClosed')
+  const [displayTiempo, setDisplayTiempo] = useState('cardClosed')
+  const [displayTiempoCard, setDisplayTiempoCard] = useState('cardClosed')
   const [displayEmpezar, setDisplayEmpezar] = useState('cardOpen')
+  const [displayEmpezarCard, setDisplayEmpezarCard] = useState('cardOpen')
+  const [displayNombre, setDisplayNombre] = useState('cardClosed')
+  const [displayContCarta, setDisplayContCarta] = useState('contenedorCarta1')
   const [zeroToggle, setZeroToggle] = useState(false);
   const [clearToggle, setClearToggle] = useState(true);
-  const [displayRanking, setDisplayRanking] = useState('ranking')
-  const [displayRankingCard, setDisplayRankingCard] = useState('rankingCard')
+  const [displayRanking, setDisplayRanking] = useState('cardClosed')
+  const [displayRankingCard, setDisplayRankingCard] = useState('cardClosed')
   const [points, setPoints] = useState([]);
   const [getRanking, setGetRanking] = useState(true);
   const [numArray, setNumArray] = useState([]);
 
-  console.log('segundo: ' + segundo);
-  console.log('numArray: ' + numArray);
-  console.log('displayPoints: ' + displayPoints);
-  console.log('getRanking: ' + getRanking);
-  console.log('ClearToggle: ' + clearToggle);
+  // console.log('segundo: ' + segundo);
+  // console.log('numArray: ' + numArray);
+  // console.log('displayPoints: ' + displayPoints);
+  // console.log('getRanking: ' + getRanking);
+  // console.log('ClearToggle: ' + clearToggle);
 
-  
+
 
   function TickTack(numero) {
 
@@ -72,7 +79,11 @@ function App() {
 
   function Empezar() {
     setDisplayContador('contadorOpen');
+    setDisplayContCarta('contenedorCarta2');
+    setDisplayTiempo('tiempOpen');
+    setDisplayTiempoCard('tiempOpenCard');
     setDisplayEmpezar('cardClosed');
+    setDisplayNombre('cardClosed');
     setDisplayRanking('cardClosed');
     setDisplayRankingCard('cardClosed');
     setGetRanking(false);
@@ -85,6 +96,12 @@ function App() {
     Lanzar();
   }
 
+  function agregarNombre() {
+    setDisplayEmpezarCard('cardClosed');
+    setDisplayNombre('cardOpen');
+    setDisplayContCarta('contenedorCarta3');
+  }
+
   useEffect(() => {
     if (getRanking) {
       fetch("http://localhost:3030/api/puntos/")
@@ -94,6 +111,15 @@ function App() {
       setGetRanking(false);
     }
   }, [getRanking])
+
+  const pointsOrdenados = points.sort((a, b) => {
+    if (a.puntos > b.puntos) {
+      return -1;
+    } else if (a.puntos < b.puntos) {
+      return 1;
+    }
+  });
+
 
   useEffect(() => {
     if (segundo === 25 && pregunta < 6) {
@@ -112,8 +138,11 @@ function App() {
       setDisplay4('cardClosed');
       setDisplay5('cardClosed');
       setDisplay6('cardClosed');
-      setDisplayContador('cardClosed')
-      setDisplayPoints('cardOpen');
+      setDisplayContador('cardClosed');
+      setDisplayTiempo('cardClosed');
+      setDisplayTiempoCard('cardClosed');
+      setDisplayPoints('pointsOpen');
+      setDisplayContCarta('contenedorCarta3');
     }
   }, [segundo, pregunta, Lanzar])
 
@@ -195,8 +224,11 @@ function App() {
     setGetRanking(toggle);
     setDisplayRanking('ranking');
     setDisplayRankingCard('rankingCard');
-    setDisplayEmpezar('cardOpen');
     setDisplayPoints('cardClosed');
+    setDisplayContCarta('contenedorCarta1');
+    setDisplayEmpezar('cardClosed');
+    setDisplayEmpezarCard('cardClosed');
+    setNombreJugador('Nickname');
     setNumArray([]);
     setPregunta(0);
     setSegundo(0);
@@ -208,7 +240,6 @@ function App() {
     JQuerycode();
   }, [])
 
-
   const JQuerycode = () => {
     console.log("jquery");
     $(".visor").detach().prependTo(".contPreguntes");
@@ -218,73 +249,175 @@ function App() {
     )
   }
 
+  const nuevoJuego = () => {
+    setDisplayEmpezar('cardOpen');
+    setDisplayEmpezarCard('cardOpen');
+    setDisplayRanking('cardClosed');
+    setDisplayRankingCard('cardClosed');
+  }
+
+  const [nombreJugador, setNombreJugador] = useState('Nickname')
+
+  const onChange = (input) => {
+    setNombreJugador(input);
+    console.log("Input changed", input);
+  }
+
+  const onKeyPress = (button) => {
+    console.log("Button pressed", button);
+  }
+
+
   return (
     <>
       <div className='contenedorVisor'>
+
+        <div className={displayEmpezar}>
+          <h1 className='textoInicio'> Hello! <br /> Welcome to the final quiz, <br /> how much have you learned?</h1>
+        </div>
+
         <div className={displayRanking}>
-          <h1 className='tituloRanking'>RANKING:</h1>
-          <ol >
-            {points.map(jugador => (
+          <h1 className='tituloRanking'>Scoreboard</h1>
+          <ol>
+            {(pointsOrdenados.slice(0, 1)).map(jugador => (
+              <div>
+                <li key={jugador.id} className='jugador' >
+                  <h1 className='nombrePrimero'>{jugador.nombre} <h1 className='puntosPrimero'>{jugador.puntos} points</h1></h1>
+                </li>
+                <img className='banderitas' src='./banderitas.png' alt='banderitas' />
+              </div>
+            ))}
+          </ol>
+          <ol>
+            {(pointsOrdenados.slice(1, pointsOrdenados.length)).map(jugador => (
               <li key={jugador.id} className='jugador' >
-                <h1 className='nombreJugador'>{jugador.nombre} - {jugador.puntos}</h1>
+                <h1 className='nombreJugador'>{jugador.nombre} <h1 className='puntosJugador'>{jugador.puntos} points</h1></h1>
               </li>
             ))}
           </ol>
         </div>
 
         <div className={displayContador}>
-          <Contador className='contador' zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
-          <h1 className='currentPregunta'> Pregunta: {pregunta} </h1>
-          <h3 className='currentPuntos'> Puntos: {puntos} </h3>
+          <h1 className='currentPregunta'> Question {pregunta} </h1>
+          {/* <h3 className='currentPuntos'> Puntos: {puntos} </h3> */}
+          <h1 className='currentPregunta'> {pregunta}/10 </h1>
         </div>
 
-        <div className='contPreguntes' />
-
+        <div className='contPreguntes'>
+          <div className='contContador'>
+            <div className={displayTiempo}>
+              <Contador className='contador' zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
+            </div>
+          </div>
+        </div>
       </div>
 
 
-      <div className='contenedorCarta'>
-        <div className={displayEmpezar}>
-          <button className='empezar' onClick={Empezar}>Nuevo juego</button>
-          <div className={displayRankingCard}>
-            <h1 className='tituloRankingCard'>RANKING:</h1>
-            <ol >
-              {points.map(jugador => (
-                <li key={jugador.id} className='jugador' >
-                  <h1 className='nombreJugadorCard'>{jugador.nombre} - {jugador.puntos}</h1>
-                </li>
-              ))}
-            </ol>
-          </div>
+      <div className={displayContCarta}>
+
+        <div className={displayEmpezarCard}>
+          <h1 className='textoInicioCard'> Hello! <br /> Welcome to the final quiz, <br /> how much have you learned?</h1>
+          <button className='registrarBoton' onClick={agregarNombre}>Take the quiz</button>
+          <button className='rankingBoton' onClick={verRanking}>Scoreboard</button>
         </div>
+
+        <div className={displayNombre}>
+          <h1 className='textoRegistro'>Before we start...</h1>
+          {/* <input
+            className='nombreInput'
+            type='text'
+            placeholder='Nickname'
+          /> */}
+
+          <h1 className='nombreInput'> {nombreJugador} </h1>
+          <div className='teclado'>
+            <Keyboard
+              onChange={onChange}
+              onKeyPress={onKeyPress}
+            />
+          </div>
+          <button className='empezarBoton' onClick={Empezar}>Lets go!</button>
+        </div>
+
         <div>
           <div className={display1}>
+            <div className='tituloPreguntaCard'>
+              <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
+            </div>
             <Carta1 segundo={segundo} gameOver={gameOver}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
           <div className={display2}>
+            <div className='tituloPreguntaCard'>
+              <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
+            </div>
             <Carta2 segundo={segundo} gameOver={gameOver}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
           <div className={display3}>
+            <div className='tituloPreguntaCard'>
+              <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
+            </div>
             <Carta3 segundo={segundo} gameOver={gameOver}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
           <div className={display4}>
+            <div className='tituloPreguntaCard'>
+              <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
+            </div>
             <Carta4 segundo={segundo} gameOver={gameOver}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
           <div className={display5}>
+            <div className='tituloPreguntaCard'>
+              <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
+            </div>
             <Carta5 segundo={segundo} gameOver={gameOver}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
           <div className={display6}>
+            <div className='tituloPreguntaCard'>
+              <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
+            </div>
             <Carta6 segundo={segundo} gameOver={gameOver}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
-          <div className={displayPoints}>
-            <PostForm points={puntos} sendAbrirToggle={verRanking}/>
+
+          <div className={displayTiempoCard}>
+            <Contador className='contador' zeroToggle={zeroToggle} clearToggle={clearToggle} sendContador={TickTack} />
           </div>
+          <div className={displayTiempoCard}>
+            <h1 className='contadorPreguntaCard'>{pregunta}/10</h1>
+          </div>
+
+
+          <div className={displayPoints}>
+            <PostForm points={puntos} name={nombreJugador} sendAbrirToggle={verRanking} />
+          </div>
+
+          <div className={displayRankingCard}>
+            <button className='homeBoton' onClick={nuevoJuego}>Home</button>
+            <h1 className='tituloRankingCard'>Scoreboard:</h1>
+            {/* <h1 className='nombrePrimeroCard'>{primero.nombre} <h1 className='puntosPrimeroCard'>{primero.puntos}</h1></h1> */}
+            <ol>
+              {(pointsOrdenados.slice(0, 1)).map(jugador => (
+                <div>
+                  <li key={jugador.id} className='jugador' >
+                    <h1 className='nombrePrimeroCard'>{jugador.nombre} <h1 className='puntosPrimeroCard'>{jugador.puntos} points</h1></h1>
+                  </li>
+                  <img className='banderitasCard' src='./banderitas.png' alt='banderitas' />
+                </div>
+              ))}
+            </ol>
+            <ol >
+              {(pointsOrdenados.slice(1, pointsOrdenados.length)).map(jugador => (
+                <li key={jugador.id} className='jugador' >
+                  <h1 className='nombreJugadorCard'>{jugador.nombre} <h1 className='puntosJugadorCard'>{jugador.puntos} points</h1></h1>
+                </li>
+              ))}
+            </ol>
+          </div>
+
         </div>
       </div>
     </>

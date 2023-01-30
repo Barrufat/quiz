@@ -11,10 +11,10 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
   const [color2B, setColor2B] = useState('closed');
   const [color3B, setColor3B] = useState('closed');
   const [color4B, setColor4B] = useState('closed');
-  const [color1Card, setColor1Card] = useState('respuestaCard');
-  const [color2Card, setColor2Card] = useState('respuestaCard');
-  const [color3Card, setColor3Card] = useState('respuestaCard');
-  const [color4Card, setColor4Card] = useState('respuestaCard');
+  const [color1Card, setColor1Card] = useState('respuestaCard1');
+  const [color2Card, setColor2Card] = useState('respuestaCard1');
+  const [color3Card, setColor3Card] = useState('respuestaCard1');
+  const [color4Card, setColor4Card] = useState('respuestaCard1');
   const [color1BCard, setColor1BCard] = useState('closed');
   const [color2BCard, setColor2BCard] = useState('closed');
   const [color3BCard, setColor3BCard] = useState('closed');
@@ -28,7 +28,7 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor3('closed')
     setColor3B('respuestaCorrecta')
     setColor3Card('closed')
-    setColor3BCard('respuestaCorrectaCard')
+    setColor3BCard('respuestaCorrectaCard1')
     sendPausa(true);
 
     if (segundo < 5) {
@@ -45,7 +45,7 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor2('closed')
     setColor2B('respuestaIncorrecta')
     setColor2Card('closed')
-    setColor2BCard('respuestaIncorrectaCard')
+    setColor2BCard('respuestaIncorrectaCard1')
   }
 
   const Pregunta1 = () => {
@@ -53,7 +53,7 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor1('closed')
     setColor1B('respuestaIncorrecta')
     setColor1Card('closed')
-    setColor1BCard('respuestaIncorrectaCard')
+    setColor1BCard('respuestaIncorrectaCard1')
   }
 
   const Pregunta4 = () => {
@@ -61,7 +61,7 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor4('closed')
     setColor4B('respuestaIncorrecta')
     setColor4Card('closed')
-    setColor4BCard('respuestaIncorrectaCard')
+    setColor4BCard('respuestaIncorrectaCard1')
   }
 
   const Siguiente = () => {
@@ -78,10 +78,10 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor3B('closed');
     setColor4B('closed');
 
-    setColor1Card('respuestaCard');
-    setColor2Card('respuestaCard');
-    setColor3Card('respuestaCard');
-    setColor4Card('respuestaCard');
+    setColor1Card('respuestaCard1');
+    setColor2Card('respuestaCard1');
+    setColor3Card('respuestaCard1');
+    setColor4Card('respuestaCard1');
     setColor1BCard('closed');
     setColor2BCard('closed');
     setColor3BCard('closed');
@@ -100,10 +100,10 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
       setColor3B('closed');
       setColor4B('closed');
 
-      setColor1Card('respuestaCard');
-      setColor2Card('respuestaCard');
-      setColor3Card('respuestaCard');
-      setColor4Card('respuestaCard');
+      setColor1Card('respuestaCard1');
+      setColor2Card('respuestaCard1');
+      setColor3Card('respuestaCard1');
+      setColor4Card('respuestaCard1');
       setColor1BCard('closed');
       setColor2BCard('closed');
       setColor3BCard('closed');
@@ -115,26 +115,30 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
   return (
     <>
       <div className='visor visor_3'>
-        <h1 className='pregunta'>Pregunta3: Lorem ipsum nosekee?</h1>
-        <div>
-          <h2 className={color1} >Respuesta 1</h2>
-          <h2 className={color1B} >Respuesta 1</h2>
-        </div>
-        <div>
-          <h2 className={color2} >Respuesta 2</h2>
-          <h2 className={color2B}>Respuesta 2</h2>
-        </div>
-        <div>
-          <h2 className={color3} >Respuesta 3</h2>
-          <h2 className={color3B}>Respuesta 3</h2>
-        </div>
-        <div>
-          <h2 className={color4} >Respuesta 4</h2>
-          <h2 className={color4B}>Respuesta 4</h2>
+        <div className='contPreguntas'>
+          <h1 className='pregunta'>Pregunta3: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Ducimus est vitae nihil non commodi iste nisi dicta dolores, quo beatae. nosekee?</h1>
+          <div>
+            <h2 className={color1} >Respuesta 1</h2>
+            <h2 className={color1B} >Respuesta 1</h2>
+          </div>
+          <div>
+            <h2 className={color2} >Respuesta 2</h2>
+            <h2 className={color2B}>Respuesta 2</h2>
+          </div>
+          <div>
+            <h2 className={color3} >Respuesta 3</h2>
+            <h2 className={color3B}>Respuesta 3</h2>
+          </div>
+          <div>
+            <h2 className={color4} >Respuesta 4</h2>
+            <h2 className={color4B}>Respuesta 4</h2>
+          </div>
         </div>
       </div>
       <div className='carta'>
-        <h1 className='preguntaCard'>Pregunta3: Lorem ipsum nosekee?</h1>
+        <h1 className='preguntaCard'>Pregunta3: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Ducimus est vitae nihil non commodi iste nisi dicta dolores, quo beatae. nosekee?</h1>
         <div>
           <h2 className={color1Card} onClick={Pregunta1}>Respuesta 1</h2>
           <h2 className={color1BCard} >Respuesta 1</h2>
@@ -151,7 +155,7 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
           <h2 className={color4Card} onClick={Pregunta4}>Respuesta 4</h2>
           <h2 className={color4BCard}>Respuesta 4</h2>
         </div>
-        <h1 className={siguiente} onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
+        <h1 className={siguiente}  onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
       </div>
     </>
   )

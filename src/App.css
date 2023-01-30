@@ -1,3 +1,8 @@
+@font-face {
+    font-family: ClashQuiz;
+    src: url(/public/ClashDisplay-Variable.ttf);
+}
+
 .cardOpen {
     display: flex;
     flex-direction: column;
@@ -8,37 +13,53 @@
     display: none;
 }
 
-.contenedorCarta {
-    background-color: rgb(154, 206, 189);
-    height: 768px;
-    width:1024px;
+.contenedorCarta1 {
+    height: 1920px;
+    width: 1080px;
     margin: 0 auto;
     overflow: auto;
+    background-image: url(/public/ImgFondo.png);
+    background-size: cover;
+}
+
+.contenedorCarta2 {
+    height: 1920px;
+    width: 1080px;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: #E9E5E2;
+    background-size: cover;
+}
+
+.contenedorCarta3 {
+    height: 1920px;
+    width: 1080px;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: #32233C;
+    background-size: cover;
 }
 
 .contenedorVisor {
-    width: 1080px;
-    height: 1920px;
+    width: 2160px;
+    height: 3840px;
     justify-content: center;
     margin: 0 auto;
     overflow: auto;
-    background-color:rgb(93, 141, 125);
+    background-image: url(/public/ImgFondo.png);
+    background-size: cover;
 }
 
 .ranking {
-    width: 1080px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
+
 .rankingCard {
-    width: 1024px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 10px;
 }
 
 .jugador {
@@ -46,49 +67,286 @@
 }
 
 .nombreJugador {
-    background-color: rgb(165, 197, 187);
-    border-radius: 10px;
-    color: rgb(25, 59, 47);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px;
-    font-size: 50px;
+    display: flex;
+    padding: 0px 0px 0px 60px;
+    background-color: none;
+    border-radius: 100px;
+    border: solid 10px white;
+    color: White;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 70px;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    justify-content: space-between;
 }
 
 .nombreJugadorCard {
-    background-color: rgb(165, 197, 187);
-    border-radius: 10px;
-    color: rgb(25, 59, 47);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px;
-    font-size: 50px;
+    display: flex;
+    padding: 0px 0px 0px 60px;
+    background-color: none;
+    border-radius: 100px;
+    border: solid 10px white;
+    color: White;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 55px;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+}
+
+.puntosJugador {
+    display: flex;
+    text-align: center;
+    background-color: white;
+    border-radius: 100px;
+    color: Black;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size:70px;
+    height: 100%;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.puntosJugadorCard {
+    display: flex;
+    text-align: center;
+    background-color: white;
+    border-radius: 100px;
+    color: Black;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 55px;
+    height: 100%;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nombrePrimero{
+    display: flex;
+    padding: 0px 0px 0px 60px;
+    background-color: #32233C;
+    border-radius: 100px;
+    border: solid 5px white;
+    color: White;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 70px;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    justify-content: space-between;
+}
+
+.nombrePrimeroCard{
+    display: flex;
+    padding: 0px 0px 0px 60px;
+    background-color: #32233C;
+    border-radius: 100px;
+    border: solid 5px white;
+    color: White;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 55px;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+}
+
+.puntosPrimero{
+    margin-right: -5px;
+    display: flex;
+    text-align: center;
+    background-color: white;
+    border-radius: 100px;
+    color: #32233C;
+    border: solid 15px #32233C;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 70px;
+    height: 100%;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.puntosPrimeroCard{
+    margin-right: -5px;
+    display: flex;
+    text-align: center;
+    background-color: white;
+    border-radius: 100px;
+    color: #32233C;
+    border: solid 8px #32233C;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 55px;
+    height: 100%;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.banderitas{
+    display: flex;
+    width: 60%;
+    height: 190px;
+    margin-top: -255px;
+    margin-left: 800px;
+    margin-bottom: 40px;
+}
+
+.banderitasCard{
+    display: flex;
+    width: 60%;
+    height: 120px;
+    margin-top: -180px;
+    margin-left: 385px;
+    margin-bottom: 22px
 }
 
 .tituloRanking {
-    background-color: rgb(0, 0, 0, 0.3);
-    color: rgb(30, 44, 39);
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px;
+    margin-top: 300px;
+    display: flex;
+    padding: 0px 60px 0px 60px;
+    background-color: none;
+    border-radius: 100px;
+    border: solid 10px white;
+    color: White;
+    font-family: ClashQuiz;
+    font-weight: normal;
     font-size: 70px;
-    width: 100%;
-    text-align: center;
+    align-items: center;
+    width: 50%;
+    height: 100px;
+    justify-content: center;
 }
 
 .tituloRankingCard {
-    background-color: rgb(0, 0, 0, 0.3);
-    color: rgb(30, 44, 39);
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px;
-    font-size: 60px;
-    width: 100%;
+    display: flex;
+    padding: 0px 60px 0px 60px;
+    background-color: none;
+    border-radius: 100px;
+    border: solid 10px white;
+    color: White;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 70px;
+    align-items: center;
+    width: 50%;
+    height: 100px;
+    justify-content: center;
+}
+
+ol {
+    list-style-type: upper-roman;
+    list-style-position: inside;
+    width: 80%;
+    padding: 0px;
+}
+
+.textoInicio {
+    padding-top: 1300px;
+    font-size: 100px;
+    color: white;
+    font-family: ClashQuiz;
+    font-weight: 400;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.textoRegistro {
+    padding-top: 500px;
+    font-size: 80px;
+    color: white;
+    font-family: ClashQuiz;
+    font-weight: 400;
     text-align: center;
 }
 
-button.empezar{
-    margin:20px;
+.nombreInput {
+    width: 70%;
+    background-color: white;
+    border-radius: 100px;
+    color: black;
+    font-size: 70px;
+    padding: 20px 40px;
+    font-family: ClashQuiz;
+    font-weight: 400;
+}
+
+.textoInicioCard {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 500px;
+    margin-bottom: 100px;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    font-family: ClashQuiz;
+    font-weight: 400;
+}
+
+button.empezarBoton {
+    width: 40%;
+    border: solid 5px white;
+    margin: 50px;
+    height: 100px;
+    font-size: 60px;
+    background-color: #807C98;
+    border-radius: 100px;
+    color: white;
+    font-family: ClashQuiz;
+    font-weight: 400;
+}
+
+button.homeBoton {
+    width: 40%;
+    border: solid 5px white;
+    margin: 250px 50px 50px 50px;
+    height: 110px;
+    font-size: 60px;
+    background-color: #807C98;
+    border-radius: 100px;
+    color: white;
+    font-family: ClashQuiz;
+    font-weight: 400;
+}
+
+button.registrarBoton {
+    border: none;
+    padding: 20px 40px;
+    margin: 20px;
+    height: 150px;
+    width: 60%;
+    font-size: 60px;
+    background-color: white;
+    border-radius: 100px;
+    color: black;
+    font-family: ClashQuiz;
+    font-weight: 400;
+}
+
+button.rankingBoton {
+    border: solid 1px white;
+    padding: 10px 30px 10px 30px;
+    width: 40%;
+    margin-top: 200px;
     height: 100px;
     font-size: 50px;
+    background: none;
+    border-radius: 100px;
+    color: white;
+    font-family: ClashQuiz;
+    font-weight: 400;
 }
 
 .casilla {
@@ -97,30 +355,76 @@ button.empezar{
     width: 100%;
 }
 
-.contadorOpen{
-    margin-top:100px;
-    display:flex;
-    justify-content: center;
+.contadorOpen {
+    height: 250px;
+    background: linear-gradient(rgb(255, 255, 255), #DCE3D6);
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 
-.currentPuntos{
+.tiempOpen {
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tiempOpenCard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+}
+
+.contContador {
+    background-color: #F4F2F0;
+}
+
+.currentPuntos {
     background-color: rgb(227, 240, 236);
     border-radius: 50px;
     margin: 20px;
     padding: 20px;
     color: rgb(30, 44, 39);
     font-weight: bold;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: ClashQuiz;
+    font-weight: normal;
     font-size: 45px;
 }
 
-.currentPregunta{
-    margin:5px;
-    color: rgb(30, 44, 39);
+.currentPregunta {
+    padding-top: 120px;
+    color: rgb(0, 0, 0);
     font-weight: bolder;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: ClashQuiz;
+    font-weight: normal;
     font-size: 60px;
+}
+
+.tituloPreguntaCard {
+    width: 100%;
+    background-color: #E9E5E2;
+}
+
+.currentPreguntaCard {
+    margin: 80px 0px 0px 50px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 50px;
+}
+
+.contadorPreguntaCard {
+    margin: 80px 0px 0px 800px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 50px;
+}
+
+.teclado {
+    width: 80%;
 }

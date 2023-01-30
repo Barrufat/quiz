@@ -1,5 +1,4 @@
 .contador{
-    background-color: rgb(227, 240, 236);
     border-radius: 50px;
     margin: 20px;
     padding: 20px;
@@ -8,4 +7,13 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 45px;
+}
+
+.progressbar{
+    display:flex;
+    position:relative;
+    text-align: center;
+    height: 80px;
+    width: 80%;
+    margin: 80px 0px 80px 0px;
 }
