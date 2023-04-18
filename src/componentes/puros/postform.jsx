@@ -3,12 +3,16 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function PostForm({ name, points, sendAbrirToggle }) {
+
     const url = "http://localhost:3030/api/puntos/create"
+    const [rankingToggle, setRankingToggle] = useState(false);
 
     function submit(e) {
+        console.log("Puntos Jugador desde form: ", points);
+
         e.preventDefault();
         axios.post(url, {
-            nombre: [name],
+            nombre: name,
             puntos: [points],
         })
             .then(res => {
@@ -20,10 +24,8 @@ function PostForm({ name, points, sendAbrirToggle }) {
             })
     }
 
-    const [rankingToggle, setRankingToggle] = useState(false);
-
     function abrirRanking() {
-        sendAbrirToggle(rankingToggle); 
+        sendAbrirToggle(rankingToggle);
     }
 
     return (

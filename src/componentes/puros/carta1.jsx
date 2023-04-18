@@ -1,34 +1,56 @@
 import './cartaTipo1.css';
 import React, { useEffect, useState } from "react";
+import $ from 'jquery';
+import { useTranslation } from 'react-i18next';
 
-const Carta1 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => {
-
-  const [color1, setColor1] = useState('respuesta');
-  const [color2, setColor2] = useState('respuesta');
-  const [color3, setColor3] = useState('respuesta');
-  const [color4, setColor4] = useState('respuesta');
-  const [color1B, setColor1B] = useState('closed');
-  const [color2B, setColor2B] = useState('closed');
-  const [color3B, setColor3B] = useState('closed');
-  const [color4B, setColor4B] = useState('closed');
-  const [color1Card, setColor1Card] = useState('respuestaCard1');
-  const [color2Card, setColor2Card] = useState('respuestaCard1');
-  const [color3Card, setColor3Card] = useState('respuestaCard1');
-  const [color4Card, setColor4Card] = useState('respuestaCard1');
-  const [color1BCard, setColor1BCard] = useState('closed');
-  const [color2BCard, setColor2BCard] = useState('closed');
-  const [color3BCard, setColor3BCard] = useState('closed');
-  const [color4BCard, setColor4BCard] = useState('closed');
+const Carta1 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver, idioma }) => {
 
   const [siguiente, setSiguiente] = useState('closed');
+  const [t, i18n] = useTranslation("global");
 
+
+  const JQuerycode = () => {
+    //inici
+    $(".respuesta1").load("./SmallGreen.svg", function () {
+      if (idioma == "en") {
+        $(".respuesta1 #smallgreen-s-tspan22").html('What is the name of this plant?');
+      } else if (idioma == "ar") {
+        $(".respuesta1 #smallgreen-s-tspan22").html('azdgzdzg');
+      }
+    });
+
+    $(".respuesta2").load("./SmallRed1.svg", function () {
+      if (idioma == "en") {
+        $(".respuesta2 #smallred1-s-tspan24").html('What is the name of this plant?');
+      } else if (idioma == "ar") {
+        $(".respuesta2 #smallred1-s-tspan24").html('azdgzdzg');
+      }
+    });
+
+    $(".respuesta3").load("./SmallRed2.svg", function () {
+      if (idioma == "en") {
+        $(".respuesta3 #smallred2-s-tspan24").html('What is the name of this plant?');
+      } else if (idioma == "ar") {
+        $(".respuesta3 #smallred2-s-tspan24").html('azdgzdzg');
+      }
+    });
+
+    $(".respuesta4").load("./SmallRojo3.svg", function () {
+      if (idioma == "en") {
+        $(".respuesta4 .tspan").html('What is the name of this plant?');
+      } else if (idioma == "ar") {
+        $(".respuesta4 .tspan").html('azdgzdzg');
+      }
+    });
+  }
+
+  useEffect(() => {
+    JQuerycode();
+  }, [])
 
   const PreguntaAcertada = () => {
+   // document.getElementById("smallgreen").svgatorPlayer.play();
     setSiguiente('open')
-    setColor3('closed')
-    setColor3B('respuestaCorrecta')
-    setColor3Card('closed')
-    setColor3BCard('respuestaCorrectaCard1')
     sendPausa(true);
 
     if (segundo < 5) {
@@ -40,28 +62,19 @@ const Carta1 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     }
   }
 
-  const Pregunta2 = () => {
-    sendPuntos(-10)
-    setColor2('closed')
-    setColor2B('respuestaIncorrecta')
-    setColor2Card('closed')
-    setColor2BCard('respuestaIncorrectaCard1')
-  }
-
   const Pregunta1 = () => {
     sendPuntos(-10)
-    setColor1('closed')
-    setColor1B('respuestaIncorrecta')
-    setColor1Card('closed')
-    setColor1BCard('respuestaIncorrectaCard1')
+    document.getElementById("smallred1").svgatorPlayer.play();
   }
 
-  const Pregunta4 = () => {
+  const Pregunta2 = () => {
     sendPuntos(-10)
-    setColor4('closed')
-    setColor4B('respuestaIncorrecta')
-    setColor4Card('closed')
-    setColor4BCard('respuestaIncorrectaCard1')
+    document.getElementById("smallred2").svgatorPlayer.play();
+  }
+
+  const Pregunta3 = () => {
+    sendPuntos(-10)
+    document.getElementById("uae_10_buttonmediumlargesmall-grey-and-color1").svgatorPlayer.play();
   }
 
   const Siguiente = () => {
@@ -69,45 +82,45 @@ const Carta1 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     siguienteSend(true);
     setSiguiente('closed');
 
-    setColor1('respuesta');
-    setColor2('respuesta');
-    setColor3('respuesta');
-    setColor4('respuesta');
-    setColor1B('closed');
-    setColor2B('closed');
-    setColor3B('closed');
-    setColor4B('closed');
+    // setColor1('respuesta');
+    // setColor2('respuesta');
+    // setColor3('respuesta');
+    // setColor4('respuesta');
+    // setColor1B('closed');
+    // setColor2B('closed');
+    // setColor3B('closed');
+    // setColor4B('closed');
 
-    setColor1Card('respuestaCard1');
-    setColor2Card('respuestaCard1');
-    setColor3Card('respuestaCard1');
-    setColor4Card('respuestaCard1');
-    setColor1BCard('closed');
-    setColor2BCard('closed');
-    setColor3BCard('closed');
-    setColor4BCard('closed');
+    // setColor1Card('respuestaCard1');
+    // setColor2Card('respuestaCard1');
+    // setColor3Card('respuestaCard1');
+    // setColor4Card('respuestaCard1');
+    // setColor1BCard('closed');
+    // setColor2BCard('closed');
+    // setColor3BCard('closed');
+    // setColor4BCard('closed');
   }
 
   useEffect(() => {
     if (gameOver) {
 
-      setColor1('respuesta');
-      setColor2('respuesta');
-      setColor3('respuesta');
-      setColor4('respuesta');
-      setColor1B('closed');
-      setColor2B('closed');
-      setColor3B('closed');
-      setColor4B('closed');
+      // setColor1('respuesta');
+      // setColor2('respuesta');
+      // setColor3('respuesta');
+      // setColor4('respuesta');
+      // setColor1B('closed');
+      // setColor2B('closed');
+      // setColor3B('closed');
+      // setColor4B('closed');
 
-      setColor1Card('respuestaCard1');
-      setColor2Card('respuestaCard1');
-      setColor3Card('respuestaCard1');
-      setColor4Card('respuestaCard1');
-      setColor1BCard('closed');
-      setColor2BCard('closed');
-      setColor3BCard('closed');
-      setColor4BCard('closed');
+      // setColor1Card('respuestaCard1');
+      // setColor2Card('respuestaCard1');
+      // setColor3Card('respuestaCard1');
+      // setColor4Card('respuestaCard1');
+      // setColor1BCard('closed');
+      // setColor2BCard('closed');
+      // setColor3BCard('closed');
+      // setColor4BCard('closed');
     }
   }, [gameOver])
 
@@ -116,46 +129,28 @@ const Carta1 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     <>
       <div className='visor visor_1'>
         <div className='contPreguntas'>
-          <h1 className='pregunta'> Pregunta1: Lorem ipsum nosekee? Lorem ipsum dolor sit 
-          amet consectetur adipisicing elit. Nihil, doloribus! </h1>
-          <div>
-            <h2 className={color1}> Respuesta 1</h2>
-            <h2 className={color1B} >Respuesta 1</h2>
-          </div>
-          <div>
-            <h2 className={color2} >Respuesta 2</h2>
-            <h2 className={color2B}>Respuesta 2</h2>
-          </div>
-          <div>
-            <h2 className={color3} >Respuesta 3</h2>
-            <h2 className={color3B}>Respuesta 3</h2>
-          </div>
-          <div>
-            <h2 className={color4} >Respuesta 4</h2>
-            <h2 className={color4B}>Respuesta 4</h2>
+          <div className='preguntaCard'>
+            <h1 className='pregunta'>{t("pregunta1")} </h1>
+            <img className='imgCarta' src='./Carta1.png' alt='carta1' width='30%' />
+            <div className='respuesta1' />
+            <div className='respuesta2' />
+            <div className='respuesta3' />
+            <div className='respuesta4' />
           </div>
         </div>
       </div>
+
+
       <div className='carta'>
-        <h1 className='preguntaCard'> Pregunta1: Lorem ipsum nosekee? Lorem ipsum dolor sit 
-          amet consectetur adipisicing elit. Nihil, doloribus! </h1>
-        <div>
-          <h2 className={color1Card} onClick={Pregunta1}>Respuesta 1</h2>
-          <h2 className={color1BCard} >Respuesta 1</h2>
+        <div className='preguntaCard'>
+          <h1 className='preguntaCard'> {t("pregunta1")} </h1>
+          <img className='imgCarta' src='./Carta1.png' alt='carta1' width='30%' />
+          <div className='respuesta1' onClick={PreguntaAcertada} />
+          <div className='respuesta2' onClick={Pregunta1} />
+          <div className='respuesta3' onClick={Pregunta2} />
+          <div className='respuesta4' onClick={Pregunta3} />
         </div>
-        <div>
-          <h2 className={color2Card} onClick={Pregunta2}>Respuesta 2</h2>
-          <h2 className={color2BCard}>Respuesta 2</h2>
-        </div>
-        <div>
-          <h2 className={color3Card} onClick={PreguntaAcertada}>Respuesta 3</h2>
-          <h2 className={color3BCard}>Respuesta 3</h2>
-        </div>
-        <div>
-          <h2 className={color4Card} onClick={Pregunta4}>Respuesta 4</h2>
-          <h2 className={color4BCard}>Respuesta 4</h2>
-        </div>
-        <h1 className={siguiente}  onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
+        <h1 className={siguiente} onClick={Siguiente}> {t("siguientePregunta")} </h1>
       </div>
     </>
   )

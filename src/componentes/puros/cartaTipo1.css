@@ -10,46 +10,46 @@ div.visor {
 }
 
 div.carta {
-padding: 50px;
-padding-bottom:0px;
+    padding: 50px;
+    padding-bottom: 0px;
 }
 
-div.contPreguntas{
+div.contPreguntas {
     padding-left: 80px;
     padding-right: 80px;
     background-color: #F4F2F0;
 }
 
-div.contRespuestas{
+div.contRespuestas {
     display: flex;
 }
 
 h1.pregunta {
     margin-top: 300px;
-    display:flex;
+    display: flex;
     text-align: center;
     color: black;
     font-weight: bold;
-    font-family: ClashQuiz; 
-    font-weight:normal;      
+    font-family: ClashQuiz;
+    font-weight: normal;
     padding: 10px;
     padding-left: 20px;
     font-size: 80px;
     margin-left: 100px;
-    margin-right:100px;
+    margin-right: 100px;
 }
 
 
 h1.preguntaCard {
     color: black;
     font-weight: bold;
-    font-family: ClashQuiz; 
-    font-weight:normal;      
+    font-family: ClashQuiz;
+    font-weight: normal;
     padding: 10px;
     padding-left: 20px;
     font-size: 55px;
     margin-left: 100px;
-    margin-right:100px;
+    margin-right: 100px;
     text-align: center;
 }
 
@@ -58,10 +58,10 @@ h2.respuesta {
     border-radius: 100px;
     border: solid 0.5px #819C6D;
     color: black;
-    font-family: ClashQuiz; 
-    font-weight:normal;     
+    font-family: ClashQuiz;
+    font-weight: normal;
     font-size: 80px;
-    padding: 20px 30px 20px 30px;
+    padding: 20px 50px 20px 50px;
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -73,22 +73,21 @@ h2.respuestaCard1 {
     border-radius: 100px;
     color: black;
     font-family: ClashQuiz;
-    font-weight:normal;   
-    font-size: 60px;
-    padding: 20px 40px 20px 40px;
+    font-weight: normal;
+    font-size: 50px;
+    padding:  20px 40px 20px 40px;
     margin-left: 50px;
     margin-right: 50px;
     cursor: pointer;
-    padding: 10px 20px 10px 20px;
 }
 
 h2.respuestaIncorrecta {
     background-color: #DD1645;
     border-radius: 100px;
     color: rgb(255, 255, 255);
-    font-family: ClashQuiz; 
-    font-weight:normal;      
-    padding: 20px 30px 20px 30px;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    padding: 20px 50px 20px 50px;
     margin-left: 50px;
     margin-right: 50px;
     font-size: 80px;
@@ -98,9 +97,9 @@ h2.respuestaIncorrectaCard1 {
     background-color: #DD1645;
     border-radius: 100px;
     color: rgb(255, 255, 255);
-    font-family: ClashQuiz; 
-    font-weight:normal;      
-    font-size: 60px;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    font-size: 50px;
     padding: 20px 40px 20px 40px;
     margin-left: 50px;
     margin-right: 50px;
@@ -112,9 +111,9 @@ h2.respuestaCorrecta {
     background-color: #819C6D;
     border-radius: 100px;
     color: rgb(255, 255, 255);
-    font-family: ClashQuiz; 
-    font-weight:normal;     
-    padding: 20px 30px 20px 30px;
+    font-family: ClashQuiz;
+    font-weight: normal;
+    padding: 20px 50px 20px 50px;
     margin-left: 50px;
     margin-right: 50px;
     font-size: 80px;
@@ -125,18 +124,18 @@ h2.respuestaCorrectaCard1 {
     border-radius: 100px;
     color: rgb(255, 255, 255);
     font-family: ClashQuiz;
-    font-weight:normal;        
+    font-weight: normal;
     margin-left: 50px;
     margin-right: 50px;
     cursor: pointer;
-    font-size: 60px;
+    font-size: 50px;
     padding: 20px 40px 20px 40px;
 }
 
 .open {
     margin: 0 auto;
     margin-bottom: 100px;
-    text-align:center;
+    text-align: center;
     padding-top: 20px;
     border: solid 1px white;
     width: 50%;
@@ -145,10 +144,21 @@ h2.respuestaCorrectaCard1 {
     background-color: #819C6D;
     border-radius: 100px;
     color: white;
-    font-family: ClashQuiz; 
-    font-weight:400;  
+    font-family: ClashQuiz;
+    font-weight: 400;
 }
 
 .closed {
     display: none;
+}
+
+.imgCarta {
+    border-radius: 10px;
+    border: solid 1px #819C6D;
+}
+
+.preguntaCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

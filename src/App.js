@@ -2,11 +2,12 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
+import { useTranslation } from 'react-i18next';
 
 import Carta1 from './componentes/puros/carta1';
 import Carta2 from './componentes/puros/carta2';
 import Carta3 from './componentes/puros/carta3';
-import Carta4 from './componentes/puros/carta4';
+import Carta4 from './componentes/puros/cartaImg';
 import Carta5 from './componentes/puros/carta5';
 import Carta6 from './componentes/puros/carta6';
 import Contador from './componentes/puros/contador';
@@ -40,15 +41,73 @@ function App() {
   const [displayRanking, setDisplayRanking] = useState('cardClosed')
   const [displayRankingCard, setDisplayRankingCard] = useState('cardClosed')
   const [points, setPoints] = useState([]);
+  const [nombreJugador, setNombreJugador] = useState('Nickname')
   const [getRanking, setGetRanking] = useState(true);
   const [numArray, setNumArray] = useState([]);
+  const [nombreInput, setNombreInput] = useState('nombreInputGris');
 
+  console.log('NombreInput: ', nombreInput)
+  console.log('NombreJugador', nombreJugador)
   // console.log('segundo: ' + segundo);
   // console.log('numArray: ' + numArray);
   // console.log('displayPoints: ' + displayPoints);
   // console.log('getRanking: ' + getRanking);
   // console.log('ClearToggle: ' + clearToggle);
 
+  const [t, i18n] = useTranslation("global");
+  // const [displayAR, setDisplayAR] = useState('lngOff')
+  // const [displayEN, setDisplayEN] = useState('lngOn')
+
+  // const ActivoAr = () => {
+  //   setDisplayAR('lngOn');
+  //   setDisplayEN('lngOff');
+  //   i18n.changeLanguage("ar");
+  // }
+
+  // const ActivoEn = () => {
+  //   setDisplayEN('lngOn');
+  //   setDisplayAR('lngOff');
+  //   i18n.changeLanguage("en");
+  // }
+
+  const [idioma, setIdioma] = useState('en');
+  var [blockIdioma, setBlockIdioma] = useState(false);
+
+  function canviarIdioma() {
+    console.log("canviarIdioma:" + idioma)
+    if (blockIdioma == false) {
+      blockIdioma = true;
+      if (idioma == "en") {
+        document.getElementById("en-ar").svgatorPlayer.play();
+        i18n.changeLanguage("ar");
+        setIdioma("ar");
+      } else if (idioma == "ar") {
+        document.getElementById("en-ar").svgatorPlayer.reverse();
+        i18n.changeLanguage("en");
+        setIdioma("en");
+      }
+    }
+  }
+
+  const JQuerycode = () => {
+    //inici
+    $(".contLng").load("./EN-AR.svg");
+    // , function () {
+    //    document.getElementById("en-ar").svgatorPlayer.on('end',offset => endIdioma() );
+    //    document.getElementById("en-ar").svgatorPlayer.on('stop',offset => stopIdioma()
+    // }
+
+    console.log("jquery");
+    $(".visor").detach().prependTo(".contPreguntes");
+    $(".visor").hide();
+    return (
+      false
+    )
+  }
+
+  useEffect(() => {
+    JQuerycode();
+  }, [])
 
 
   function TickTack(numero) {
@@ -94,6 +153,8 @@ function App() {
     setZeroToggle(true);
     setClearToggle(false);
     Lanzar();
+
+    console.log("Nombre Jugador: ", nombreJugador);
   }
 
   function agregarNombre() {
@@ -104,6 +165,7 @@ function App() {
 
   useEffect(() => {
     if (getRanking) {
+
       fetch("http://localhost:3030/api/puntos/")
         .then(results => results.json())
         .then(results => setPoints(results.data))
@@ -228,7 +290,6 @@ function App() {
     setDisplayContCarta('contenedorCarta1');
     setDisplayEmpezar('cardClosed');
     setDisplayEmpezarCard('cardClosed');
-    setNombreJugador('Nickname');
     setNumArray([]);
     setPregunta(0);
     setSegundo(0);
@@ -236,36 +297,27 @@ function App() {
     setClearToggle(true);
   }
 
-  useEffect(() => {
-    JQuerycode();
-  }, [])
-
-  const JQuerycode = () => {
-    console.log("jquery");
-    $(".visor").detach().prependTo(".contPreguntes");
-    $(".visor").hide();
-    return (
-      false
-    )
-  }
-
   const nuevoJuego = () => {
     setDisplayEmpezar('cardOpen');
     setDisplayEmpezarCard('cardOpen');
     setDisplayRanking('cardClosed');
     setDisplayRankingCard('cardClosed');
+    setNombreJugador('Nickname');
   }
-
-  const [nombreJugador, setNombreJugador] = useState('Nickname')
 
   const onChange = (input) => {
     setNombreJugador(input);
-    console.log("Input changed", input);
+    // console.log("Input changed", input);
+    // console.log("Nombre Jugador: ", nombreJugador);
   }
 
-  const onKeyPress = (button) => {
-    console.log("Button pressed", button);
-  }
+  useEffect(() => {
+    if (nombreJugador !== 'Nickname') {
+      setNombreInput('nombreInput')
+    } else if (nombreJugador === 'Nickname') {
+      setNombreInput('nombreInputGris')
+    }
+  }, [nombreJugador])
 
 
   return (
@@ -273,7 +325,7 @@ function App() {
       <div className='contenedorVisor'>
 
         <div className={displayEmpezar}>
-          <h1 className='textoInicio'> Hello! <br /> Welcome to the final quiz, <br /> how much have you learned?</h1>
+          <h1 className='textoInicio'>{t("intro1")} <br /> {t("intro2")}  <br /> {t("intro3")} </h1>
         </div>
 
         <div className={displayRanking}>
@@ -314,26 +366,23 @@ function App() {
 
 
       <div className={displayContCarta}>
-
         <div className={displayEmpezarCard}>
-          <h1 className='textoInicioCard'> Hello! <br /> Welcome to the final quiz, <br /> how much have you learned?</h1>
+          <h1 className='textoInicioCard'> {t("intro1")} <br /> {t("intro2")} <br /> {t("intro3")}</h1>
+          <div className='contLng' onClick={canviarIdioma}>
+            {/* <button className={displayAR} onClick={ActivoAr}>AR</button>
+              <button className={displayEN} onClick={ActivoEn}>EN</button> */}
+
+          </div>
           <button className='registrarBoton' onClick={agregarNombre}>Take the quiz</button>
           <button className='rankingBoton' onClick={verRanking}>Scoreboard</button>
         </div>
 
         <div className={displayNombre}>
           <h1 className='textoRegistro'>Before we start...</h1>
-          {/* <input
-            className='nombreInput'
-            type='text'
-            placeholder='Nickname'
-          /> */}
-
-          <h1 className='nombreInput'> {nombreJugador} </h1>
+          <h1 className={nombreInput}> {nombreJugador} </h1>
           <div className='teclado'>
             <Keyboard
               onChange={onChange}
-              onKeyPress={onKeyPress}
             />
           </div>
           <button className='empezarBoton' onClick={Empezar}>Lets go!</button>
@@ -344,7 +393,7 @@ function App() {
             <div className='tituloPreguntaCard'>
               <h1 className='currentPreguntaCard'> Question {pregunta} </h1>
             </div>
-            <Carta1 segundo={segundo} gameOver={gameOver}
+            <Carta1 segundo={segundo} gameOver={gameOver} idioma={idioma}
               siguienteSend={siguientePregunta} sendPausa={pausaPregunta} sendPuntos={Puntos} />
           </div>
           <div className={display2}>

@@ -1,4 +1,4 @@
-import './cartaTipo2.css';
+import './cartaTipo1.css';
 import React, { useEffect, useState } from "react";
 
 const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => {
@@ -11,10 +11,10 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
   const [color2B, setColor2B] = useState('closed');
   const [color3B, setColor3B] = useState('closed');
   const [color4B, setColor4B] = useState('closed');
-  const [color1Card, setColor1Card] = useState('respuestaCard');
-  const [color2Card, setColor2Card] = useState('respuestaCard');
-  const [color3Card, setColor3Card] = useState('respuestaCard');
-  const [color4Card, setColor4Card] = useState('respuestaCard');
+  const [color1Card, setColor1Card] = useState('respuestaCard1');
+  const [color2Card, setColor2Card] = useState('respuestaCard1');
+  const [color3Card, setColor3Card] = useState('respuestaCard1');
+  const [color4Card, setColor4Card] = useState('respuestaCard1');
   const [color1BCard, setColor1BCard] = useState('closed');
   const [color2BCard, setColor2BCard] = useState('closed');
   const [color3BCard, setColor3BCard] = useState('closed');
@@ -28,7 +28,7 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor3('closed')
     setColor3B('respuestaCorrecta')
     setColor3Card('closed')
-    setColor3BCard('respuestaCorrectaCard')
+    setColor3BCard('respuestaCorrectaCard1')
     sendPausa(true);
 
     if (segundo < 5) {
@@ -45,7 +45,7 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor2('closed')
     setColor2B('respuestaIncorrecta')
     setColor2Card('closed')
-    setColor2BCard('respuestaIncorrectaCard')
+    setColor2BCard('respuestaIncorrectaCard1')
   }
 
   const Pregunta1 = () => {
@@ -53,7 +53,7 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor1('closed')
     setColor1B('respuestaIncorrecta')
     setColor1Card('closed')
-    setColor1BCard('respuestaIncorrectaCard')
+    setColor1BCard('respuestaIncorrectaCard1')
   }
 
   const Pregunta4 = () => {
@@ -61,7 +61,7 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor4('closed')
     setColor4B('respuestaIncorrecta')
     setColor4Card('closed')
-    setColor4BCard('respuestaIncorrectaCard')
+    setColor4BCard('respuestaIncorrectaCard1')
   }
 
   const Siguiente = () => {
@@ -78,10 +78,10 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     setColor3B('closed');
     setColor4B('closed');
 
-    setColor1Card('respuestaCard');
-    setColor2Card('respuestaCard');
-    setColor3Card('respuestaCard');
-    setColor4Card('respuestaCard');
+    setColor1Card('respuestaCard1');
+    setColor2Card('respuestaCard1');
+    setColor3Card('respuestaCard1');
+    setColor4Card('respuestaCard1');
     setColor1BCard('closed');
     setColor2BCard('closed');
     setColor3BCard('closed');
@@ -100,10 +100,10 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
       setColor3B('closed');
       setColor4B('closed');
 
-      setColor1Card('respuestaCard');
-      setColor2Card('respuestaCard');
-      setColor3Card('respuestaCard');
-      setColor4Card('respuestaCard');
+      setColor1Card('respuestaCard1');
+      setColor2Card('respuestaCard1');
+      setColor3Card('respuestaCard1');
+      setColor4Card('respuestaCard1');
       setColor1BCard('closed');
       setColor2BCard('closed');
       setColor3BCard('closed');
@@ -116,48 +116,44 @@ const Carta6 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     <>
       <div className='visor visor_6'>
         <div className='contPreguntas'>
-          <h1 className='pregunta'>Pregunta6: Lorem ipsum, dolor sit amet consectetur adipisicing. nosekee?</h1>
-          <ul className='grid'>
-            <div>
-              <img src='./ImgA.png' alt='ImgA' width='900px' className={color1} />
-              <img src='./ImgA_Red.png' alt='ImgA' width='900px' className={color1B} />
-            </div>
-            <div>
-              <img src='./ImgB.png' alt='ImgB' width='900px' className={color2} />
-              <img src='./ImgB_Red.png' alt='ImgB' width='900px' className={color2B} />
-            </div>
-            <div>
-              <img src='./ImgC.png' alt='ImgC' width='900px' className={color3} />
-              <img src='./ImgC_Green.png' alt='ImgC' width='900px' className={color3B} />
-            </div>
-            <div>
-              <img src='./ImgD.png' alt='ImgD' width='900px' className={color4} />
-              <img src='./ImgD_Red.png' alt='ImgD' width='900px' className={color4B} />
-            </div>
-          </ul>
+          <h1 className='pregunta'>What is a herbarium?</h1>
+          <div>
+            <h2 className={color1} >A type of musical instrument</h2>
+            <h2 className={color1B} >A type of musical instrument</h2>
+          </div>
+          <div>
+            <h2 className={color2} >A machine that extracts oil from plants</h2>
+            <h2 className={color2B}>A machine that extracts oil from plants</h2>
+          </div>
+          <div>
+            <h2 className={color3} >A collection of dried plant specimens used for scientific study</h2>
+            <h2 className={color3B}>A collection of dried plant specimens used for scientific study</h2>
+          </div>
+          <div>
+            <h2 className={color4} >A place where people go to learn how to grow plants</h2>
+            <h2 className={color4B}>A place where people go to learn how to grow plants</h2>
+          </div>
         </div>
       </div>
       <div className='carta'>
-        <h1 className='preguntaCard'>Pregunta6: Lorem ipsum, dolor sit amet consectetur adipisicing. nosekee?</h1>
-        <ul className='gridCard'>
-          <div>
-            <h2 className={color1Card} onClick={Pregunta1}>A</h2>
-            <h2 className={color1BCard} >A</h2>
-          </div>
-          <div>
-            <h2 className={color2Card} onClick={Pregunta2}>B</h2>
-            <h2 className={color2BCard}>B</h2>
-          </div>
-          <div>
-            <h2 className={color3Card} onClick={PreguntaAcertada}>C</h2>
-            <h2 className={color3BCard}>C</h2>
-          </div>
-          <div>
-            <h2 className={color4Card} onClick={Pregunta4}>D</h2>
-            <h2 className={color4BCard}>D</h2>
-          </div>
-        </ul>
-        <h1 className={siguiente} onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
+        <h1 className='preguntaCard'>What is a herbarium?</h1>
+        <div>
+          <h2 className={color1Card} onClick={Pregunta1}>A type of musical instrument</h2>
+          <h2 className={color1BCard} >A type of musical instrument</h2>
+        </div>
+        <div>
+          <h2 className={color2Card} onClick={Pregunta2}>A machine that extracts oil from plants</h2>
+          <h2 className={color2BCard}>A machine that extracts oil from plants</h2>
+        </div>
+        <div>
+          <h2 className={color3Card} onClick={PreguntaAcertada}>A collection of dried plant specimens used for scientific study</h2>
+          <h2 className={color3BCard}>A collection of dried plant specimens used for scientific study</h2>
+        </div>
+        <div>
+          <h2 className={color4Card} onClick={Pregunta4}>A place where people go to learn how to grow plants</h2>
+          <h2 className={color4BCard}>A place where people go to learn how to grow plants</h2>
+        </div>
+        <h1 className={siguiente}  onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
       </div>
     </>
   )

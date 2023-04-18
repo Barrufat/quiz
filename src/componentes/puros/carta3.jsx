@@ -116,44 +116,42 @@ const Carta3 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
     <>
       <div className='visor visor_3'>
         <div className='contPreguntas'>
-          <h1 className='pregunta'>Pregunta3: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Ducimus est vitae nihil non commodi iste nisi dicta dolores, quo beatae. nosekee?</h1>
+          <h1 className='pregunta'>Choose the correct habitat for the Mangrove (Avicennia marina)</h1>
           <div>
-            <h2 className={color1} >Respuesta 1</h2>
-            <h2 className={color1B} >Respuesta 1</h2>
+            <h2 className={color1} >Sand dunes </h2>
+            <h2 className={color1B} >Sand dunes </h2>
           </div>
           <div>
-            <h2 className={color2} >Respuesta 2</h2>
-            <h2 className={color2B}>Respuesta 2</h2>
+            <h2 className={color2} >Intertidal  </h2>
+            <h2 className={color2B}>Intertidal  </h2>
           </div>
           <div>
-            <h2 className={color3} >Respuesta 3</h2>
-            <h2 className={color3B}>Respuesta 3</h2>
+            <h2 className={color4} >Wadi</h2>
+            <h2 className={color4B}>Wadi</h2>
           </div>
           <div>
-            <h2 className={color4} >Respuesta 4</h2>
-            <h2 className={color4B}>Respuesta 4</h2>
+            <h2 className={color3} >Wetlands </h2>
+            <h2 className={color3B}>Wetlands</h2>
           </div>
         </div>
       </div>
       <div className='carta'>
-        <h1 className='preguntaCard'>Pregunta3: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Ducimus est vitae nihil non commodi iste nisi dicta dolores, quo beatae. nosekee?</h1>
+        <h1 className='preguntaCard'>Choose the correct habitat for the Mangrove (Avicennia marina)</h1>
         <div>
-          <h2 className={color1Card} onClick={Pregunta1}>Respuesta 1</h2>
-          <h2 className={color1BCard} >Respuesta 1</h2>
+          <h2 className={color1Card} onClick={Pregunta1}>Sand dunes </h2>
+          <h2 className={color1BCard} >Sand dunes </h2>
         </div>
         <div>
-          <h2 className={color2Card} onClick={Pregunta2}>Respuesta 2</h2>
-          <h2 className={color2BCard}>Respuesta 2</h2>
+          <h2 className={color2Card} onClick={Pregunta2}>Intertidal </h2>
+          <h2 className={color2BCard}>Intertidal </h2>
         </div>
         <div>
-          <h2 className={color3Card} onClick={PreguntaAcertada}>Respuesta 3</h2>
-          <h2 className={color3BCard}>Respuesta 3</h2>
+          <h2 className={color4Card} onClick={Pregunta4}>Wadi</h2>
+          <h2 className={color4BCard}>Wadi</h2>
         </div>
         <div>
-          <h2 className={color4Card} onClick={Pregunta4}>Respuesta 4</h2>
-          <h2 className={color4BCard}>Respuesta 4</h2>
+          <h2 className={color3Card} onClick={PreguntaAcertada}>Wetlands </h2>
+          <h2 className={color3BCard}>Wetlands</h2>
         </div>
         <h1 className={siguiente}  onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
       </div>

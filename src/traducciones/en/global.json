@@ -1,0 +1,91 @@
+{
+    "intro1": " Hello! ",
+    "intro2": "Welcome to the final quiz, ",
+    "intro3": "how much have you learned? ",
+    "intro4": "Take the quiz ",
+    "intro5": "Scoreboard",
+
+    "siguientePregunta" : "Next Question",
+
+    "pregunta1": "What's the name of this plant?",
+    "respuesta1_1": "Eastern Marsh Helleborine",
+    "respuesta1_2": "Broom Bush",
+    "respuesta1_3": "Dwarf Palm",
+    "respuesta1_4": "Maidenhair Fern",
+
+    "pregunta2": "What is the national tree of UAE?",
+    "respuesta2_1": "Arta",
+    "respuesta2_2": "Ghaf",
+    "respuesta2_3": "Mangrove",
+    "respuesta2_4": "Sidr",
+
+    "pregunta3": "Choose the correct habitat for the Mangrove (Avicennia marina)",
+    "respuesta3_1": "Sand dunes",
+    "respuesta3_2": "Intertidal",
+    "respuesta3_3": "Wadi",
+    "respuesta3_4": "Wetlands",
+
+    "pregunta4": "What is the main priority of the UAE Plant Genetic Resource Center?",
+    "respuesta4_1": "To create a botanical garden on Mars",
+    "respuesta4_2": "To ensure the conservation, protection and ehancement of the rich biodiversity of UAE",
+    "respuesta4_3": "To breed giant mutant plants",
+    "respuesta4_4": "To create a plant species that can talk to humans",
+
+    "pregunta5": "Is cryopreservation a plant conservation process?",
+    "respuesta5_1": "Yes",
+    "respuesta5_2": "No",
+
+    "pregunta6": "What is a herbarium?",
+    "respuesta6_1": "A type of musical instrument",
+    "respuesta6_2": "A machine that extracts oil from plants",
+    "respuesta6_3": "A collection of dried plant specimens used for scientific study",
+    "respuesta6_4": "A place where people go to learn how to grow plants",
+
+    "pregunta7": "In a seed bank...",
+    "respuesta7_1": "People can store their savings made from selling seeds",
+    "respuesta7_2": "You can freeze ice cream made from seeds",
+    "respuesta7_3": "You can plant seeds and grow a garden",
+    "respuesta7_4": "Genetic diversity of plant species are stored and preserved",
+
+    "pregunta8": "What is the state of endangerment of the Dwarf palm?",
+    "respuesta8_1": "Critically Endangered",
+    "respuesta8_2": "Vulnerable",
+    "respuesta8_3": "Extinct",
+    "respuesta8_4": "Not at risk",
+
+    "pregunta9": "What can we see through a microscope?",
+    "respuesta9_1": "Tiny kittens running around",
+    "respuesta9_2": "Microscopic aliens waving at yous",
+    "respuesta9_3": "Vital information about the health of a plant",
+    "respuesta9_4": "Miniature planets orbiting a cell",
+
+    "pregunta10": "Can you identify this seed?",
+    "respuesta10_1": "Acridocarpus orientalis",
+    "respuesta10_2": "Calligonum comosum",
+    "respuesta10_3": "Rumex vesicarius",
+    "respuesta10_4": "Leptadenia pyrotechnica",
+
+    "pregunta11": "What is the Red List?",
+    "respuesta11_1": "Is a list of embarrasing moments that people wish they could forget",
+    "respuesta11_2": "Is a detailed inventory of the global conservation status of local species",
+    "respuesta11_3": "Is a list of things that turn red when you squeeze them",
+    "respuesta11_4": "Is a list of tomato sauce recipes",
+
+    "pregunta12": "What is the traditional use of the ghaf tree in the UAE?",
+    "respuesta12_1": "Special wood for toothpicks",
+    "respuesta12_2": "As an antenna to communicate with other worlds",
+    "respuesta12_3": "To grow rare fruits that grant whises",
+    "respuesta12_4": "Food source and medicinal properties",
+
+    "pregunta13": "What plant is locally known as 'qafas'?",
+    "respuesta13_1": "Olive tree",
+    "respuesta13_2": "Oriental Cherry",
+    "respuesta13_3": "Seagrass",
+    "respuesta13_4": "Arabic palm tree",
+
+    "pregunta14": "Choose the correct name of this plant",
+    "respuesta14_1": "Tribulus",
+    "respuesta14_2": "Desert heliotrope",
+    "respuesta14_3": "Sidr",
+    "respuesta14_4": "Broom bush"
+}

@@ -1,7 +1,7 @@
 import './cartaTipo1.css';
 import React, { useEffect, useState } from "react";
 
-const Carta4 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => {
+const Carta11 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => {
 
   const [color1, setColor1] = useState('respuesta');
   const [color2, setColor2] = useState('respuesta');
@@ -114,44 +114,44 @@ const Carta4 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
 
   return (
     <>
-      <div className='visor visor_4'>
+      <div className='visor visor_11'>
         <div className='contPreguntas'>
-          <h1 className='pregunta'>What is the main priority of the UAE Plant Genetic Resource Center?</h1>
+          <h1 className='pregunta'>Choose the correct habitat for the Mangrove (Avicennia marina)</h1>
           <div>
-            <h2 className={color1} >To create a botanical garden on Mars</h2>
-            <h2 className={color1B} >To create a botanical garden on Mars </h2>
+            <h2 className={color1} >Sand dunes </h2>
+            <h2 className={color1B} >Sand dunes </h2>
           </div>
           <div>
-            <h2 className={color3} >To ensure the conservation, protection and ehancement of the rich biodiversity of UAE</h2>
-            <h2 className={color3B}>To ensure the conservation, protection and ehancement of the rich biodiversity of UAE</h2>
-          </div>
-          <div>
-            <h2 className={color2} >To create a plant species that can talk to humans</h2>
-            <h2 className={color2B}>To create a plant species that can talk to humans</h2>
+            <h2 className={color2} >Intertidal  </h2>
+            <h2 className={color2B}>Intertidal  </h2>
           </div>
           <div>
             <h2 className={color4} >Wadi</h2>
             <h2 className={color4B}>Wadi</h2>
           </div>
+          <div>
+            <h2 className={color3} >Wetlands </h2>
+            <h2 className={color3B}>Wetlands</h2>
+          </div>
         </div>
       </div>
       <div className='carta'>
-        <h1 className='preguntaCard'>What is the main priority of the UAE Plant Genetic Resource Center?</h1>
+        <h1 className='preguntaCard'>Choose the correct habitat for the Mangrove (Avicennia marina)</h1>
         <div>
-          <h2 className={color1Card} onClick={Pregunta1}>To create a botanical garden on Mars</h2>
-          <h2 className={color1BCard} >To create a botanical garden on Mars</h2>
+          <h2 className={color1Card} onClick={Pregunta1}>Sand dunes </h2>
+          <h2 className={color1BCard} >Sand dunes </h2>
         </div>
         <div>
-          <h2 className={color3Card} onClick={PreguntaAcertada}>To ensure the conservation, protection and ehancement of the rich biodiversity of UAE</h2>
-          <h2 className={color3BCard}>To ensure the conservation, protection and ehancement of the rich biodiversity of UAE</h2>
+          <h2 className={color2Card} onClick={Pregunta2}>Intertidal </h2>
+          <h2 className={color2BCard}>Intertidal </h2>
         </div>
         <div>
-          <h2 className={color2Card} onClick={Pregunta2}>To breed giant mutant plants</h2>
-          <h2 className={color2BCard}>To breed giant mutant plants</h2>
+          <h2 className={color4Card} onClick={Pregunta4}>Wadi</h2>
+          <h2 className={color4BCard}>Wadi</h2>
         </div>
         <div>
-          <h2 className={color4Card} onClick={Pregunta4}>To create a plant species that can talk to humans</h2>
-          <h2 className={color4BCard}>To create a plant species that can talk to humans</h2>
+          <h2 className={color3Card} onClick={PreguntaAcertada}>Wetlands </h2>
+          <h2 className={color3BCard}>Wetlands</h2>
         </div>
         <h1 className={siguiente}  onClick={Siguiente}> SIGUIENTE PREGUNTA</h1>
       </div>
@@ -159,4 +159,4 @@ const Carta4 = ({ siguienteSend, sendPuntos, sendPausa, segundo, gameOver }) => 
   )
 }
 
-export default Carta4;
+export default Carta11;

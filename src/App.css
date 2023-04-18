@@ -283,6 +283,17 @@ ol {
     font-weight: 400;
 }
 
+.nombreInputGris {
+    width: 70%;
+    background-color: white;
+    border-radius: 100px;
+    color: rgb(100, 100, 100);
+    font-size: 70px;
+    padding: 20px 40px;
+    font-family: ClashQuiz;
+    font-weight: 400;
+}
+
 .textoInicioCard {
     margin-left: 50px;
     margin-right: 50px;
@@ -428,3 +439,35 @@ button.rankingBoton {
 .teclado {
     width: 80%;
 }
+
+.contLng{
+    border-radius: 30px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
+  
+  .contLngRes{
+    border-radius: 30px;
+    border: solid 2px rgb(228, 136, 31);
+    background-color: rgb(228, 136, 31);
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .lngOff{
+    cursor:pointer;
+    border-radius: 30px;
+    background-color: rgb(228, 136, 31);
+    color: white;
+    border:none;
+    font-size: large;
+  }
+  
+  .lngOn{
+    cursor:pointer;
+    border-radius: 30px;
+    background-color: white;
+    color: rgb(228, 136, 31);
+    border:none;
+    font-size: large;
+  }
